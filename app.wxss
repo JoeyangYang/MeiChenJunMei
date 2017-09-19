@@ -7,5 +7,6 @@
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
-  margin:0;
-} 
+}
+.bg-blue{background: linear-gradient(#3399ff,#3ab3ff);}
+.color-blue{color: #3ab3ff;}
