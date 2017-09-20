@@ -11,7 +11,8 @@
  <view class="{{className}}" style="width:'{{winWidth}}';height:'{{winHeight}}'">
         
     </view>
-     <view class="show {{on}}">
-       <text>申请成功</text>
-       <text>将在{{second}}秒后自动跳转</text>
+      <view class="show {{on}}">
+       <text class='success'>更换成功</text>
+       <text class='skip'><text class='dot'>. . .</text>页面将在{{second}}秒后自动跳转<text class='dot'>. . .</text></text>
     </view>
+

@@ -12,26 +12,45 @@ Page({
      on:'on1' 
     
   },
+  //获取用户输入值
+  bindInput: function (e) {
+    var value = e.detail.value;
+    this.setData({
+      modifiy_phone: value
+    });
+  },
   //修改手机号
 confirm:function(e){
   var that=this;
-   that.setData({
-     className:'model1',
-     on:'on'
-   });
-   var num=that.data.second;
-   var timer=setInterval(function(){
-      num--;
-      that.setData({
-        second:num
-      });
-      if (num==0){
-       clearInterval(timer);
-        wx.reLaunch({
-       url: '/pages/me/index/index',
-     })
-      }
-   },1000);
+   var modifiy_phone = that.data.modifiy_phone;
+   //console.log(modifiy_phone);
+  //  if (modifiy_phone == ''){
+  //    that.setData({
+  //      className: 'model',
+  //      on: 'on1'
+  //    });
+  //    console.log(11111);
+  //  }else{
+     console.log(22222);
+     that.setData({
+       className: 'model1',
+       on: 'on'
+     });
+     var num = that.data.second;
+     var timer = setInterval(function () {
+       num--;
+       that.setData({
+         second: num
+       });
+       if (num == 0) {
+         clearInterval(timer);
+         wx.reLaunch({
+           url: '/pages/me/index/index',
+         })
+       }
+     }, 1000);
+   
+   
 },
   /**
    * 生命周期函数--监听页面加载

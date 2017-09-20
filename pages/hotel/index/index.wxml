@@ -1,45 +1,12 @@
 <!--pages/hotel/index/index.wxml-->
 <view class='all'>
   <view class='header relative'>
-    <image src='../../../img/8.png' mode='widthFix'></image>
-    <view class='head'>
-      <!--上-->
-      <view class='top center'>
-        <view class='left'>昆明</view>
-        <view class='right'>位置</view>
-      </view>
-      <!--下-->
-      <view class='bottom center'>
-        <!--入住日期-->
-        <view class="section" style="display:inline-block;">  
-            <picker mode="date" value="{{date}}" start="{{today}}" bindchange="bindDateChange" >
-              <view class="picker">
-              <view class="date">入住日期</view> 
-              <text class="dateTime">{{date}}</text>
-              </view>
-            </picker>
-          </view>
-        <!--统计入住时间-->
-        <view class="night">
-          <em class="em3"></em>
-          <text class="nightNum">{{nightNum}}晚</text>
-          <em class="em4"></em>  
-        </view>
-        <!--退房时间-->
-        <view class="section" style="display:inline-block;">
-            <picker mode="date" value="{{date}}"  bindchange="bindDateChangeEnd" start="{{date}}" >
-              <view class="picker">
-                <view class="date">离店日期</view> 
-                <text class="dateTime">{{dateEnd}}</text>  
-              </view>
-            </picker>
-        </view>
-      </view>
-    </view>
+    <image src='../../../img/top_bg.jpg' mode='widthFix'></image>
+    
   </view>
   <view class='nav relative'>
     <view class='left {{color}}' data-display="{{display}}" data-active="1" bindtap="tabChange">
-      <text>全城</text>
+      <text>项目</text>
       <image src="../../../img/10.png" class='{{color}}'></image>
     </view>
     <view class='middle {{color}}' data-display="{{display}}" data-active="2" bindtap="tabChange">
@@ -47,11 +14,28 @@
       <image src="../../../img/10.png" class='{{color}}'></image>
     </view>
     <view class='right {{color}}' data-display="{{display}}" data-active="3" bindtap="tabChange">
-      <text>品牌</text>
+      <text>类别</text>
       <image src="../../../img/10.png" class='{{color}}'></image>
     </view>
     <!--定位全城搜索-->
     <view class='container'>
+    <!--点击项目出现的隐藏块-->
+      <view class='brand {{searchStyle}}'></view>
+      <!--点击价格出现的隐藏块-->
+      <view class='price {{searchStyle}} city'>
+         <view class="price_box">
+               <view class="sort">价格排序</view>
+                <view>
+                   <text class="on">由低到高</text>
+                   <text>由高到低</text>
+                </view>
+         </view><!--price_box结束-->
+        <view class="bottom" style='border-top:1px solid #c9c9c9'>
+          <view class="empty"><text style='color:#f54556'>清空</text></view>
+          <view class="yes" bindtap="tabChange" data-ok="true" data-active="{{searchHandle}}"><text>确定</text></view>
+        </view>
+      </view>
+      <!--点击类别出出现的隐藏块-->
       <view class="city {{searchStyle}}">
         <view class="content">
           <view class="condition">
@@ -69,11 +53,9 @@
         </view>
         <view class="bottom">
           <view class="empty"><text>清空</text></view>
-          <view class="yes bg-blue" bindtap="tabChange" data-ok="true" data-active="{{searchHandle}}"><text>确定</text></view>
+          <view class="yes" bindtap="tabChange" data-ok="true" data-active="{{searchHandle}}"><text>确定</text></view>
         </view>
       </view>
-      <view class='price {{searchStyle}}'>PRICE</view>
-      <view class='brand {{searchStyle}}'>BRAND</view>
     </view>  
   </view>
   <!--主体-->
@@ -89,12 +71,16 @@
         <!--酒店详情-->
         <view class="middle">
           <view  class="hotel"><text>{{item.name}}</text></view>
-          <view  class="distance"><text>距你:XXX米→西山区</text></view>
+          <view  class="distance"><text>{{item.effect}}</text></view>
         </view>
         <!--价格-->
-        <view class="right"><text class='sign color-blue'>￥</text><text class="price color-blue">{{item.data.price}}</text><text class='rise'>起</text></view>
+        <view class="right"><text class='sign'>￥</text><text class="price">{{item.data.price}}</text><text class='rise'>起</text></view>
         </view>
       </navigator>
     </block>
+    <view class="allCase">
+      <text>. . .</text>已显示全部<text>. . .</text>
+    </view><!--allCase结束-->
   </view>
+ 
 </view>

@@ -9,13 +9,13 @@
     </view><!--userImg结束-->
     <view class="order">
        <view class="myOrder">
-          <navigator url="../../order/index/index?status=0"><text>我的订单</text><text class="rt">全部订单></text></navigator>
+          <navigator url="../../order/index/index?status=0"><text>我的预约</text><text class="rt">全部预约></text></navigator>
           <!-- <navigator class="rt">全部订单</navigator> -->
        </view>
        <view class="orderList">
                 <navigator class="pubOrder" url="../../order/index/index?status=1">
                     <image src="../../../img/check_in.png"></image>
-                    <text>待入住</text>
+                    <text>待手术</text>
                 </navigator>
                   <navigator class="pubOrder" url="../../order/index/index?status=2">
                     <image src="../../../img/check_out.png"></image>

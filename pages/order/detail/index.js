@@ -6,8 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+   refund:'申请退款',
    imgUrl: "/img/detail1.jpg",
+
   },
 
   /**
@@ -24,31 +25,32 @@ Page({
       
       if(val.id==options.id){
         if (val.status == '0') {
-          val.status = '待入住';
+          val.status = '待手术';
           that.setData({
             imgUrl: "/img/detail1.jpg",
-            imgText:'您的房间已预订成功，期待您的入住'
+            imgText:'您的手术已预约成功，祝您手术顺利'
           });
         }
         if (val.status == '1') {
           val.status = '已完成';
           that.setData({
             imgUrl: "/img/detail2.jpg",
-            imgText: '感谢您光临嘉优隆精品酒店，期待您的下次入住'
+            imgText: '您的手术已成功，祝您早日康复'
           });
         }
         if (val.status == '2') {
           val.status = '退款中';
           that.setData({
             imgUrl: "/img/detail3.jpg",
-            imgText: '您的房间退款正在办理中，请您耐心等待'
+            imgText: '我们正在飞速的为您处理退款，请稍后'
           });
         }
         if (val.status == '3') {
           val.status = '已退款';
           that.setData({
             imgUrl: "/img/detail4.jpg",
-            imgText: '您的房间已退款成功，期待您的下次入住'
+            imgText: '您的退款已经完成，给您带来的不便我们深感歉意',
+            refund:'拨打电话'
           });
         }
         signHotel.push(val);

@@ -16,82 +16,19 @@
   display: block;
 }
 .header image{
-  width: 100%;}
+  width: 100%;
+  border-top:2px solid #000;
+  }
 /*时间计算*/  
-.head{
-  width: 80%;
-  background-color: white;
-  box-shadow: gray 0rpx 0rpx 10rpx;
-  position: absolute;
-  top: 50%;
-  left: 10%;
-  border-radius: 12rpx;}
-/*上*/  
-.head .top{
-  width: 90%;
-  line-height: 50rpx;
-  margin-top: 15rpx;
-  margin-bottom: 15rpx;}
-/*地址*/  
-.head .top .left{
-  display: inline-block;
-  box-sizing: border-box;
-  padding: 5rpx;
-  width: 70%;
-  font-size: 33rpx;}
-/*位置*/  
-.head .top .right{
-  display: none;
-  box-sizing: border-box;
-  width: 30%;
-  text-align: center;
-  border-left: 1px gainsboro solid;
-  padding: 5rpx;
-  font-size: 34rpx;}
-/*下*/  
-.head .bottom{ 
-  border-top: 1px solid gainsboro;
-  margin-bottom: 40rpx;
-  width: 90%;
-  text-align: center;
-  display:table;}
-/*入住时间*/
-.head .bottom .section{align-items: center;justify-content: center;display: table-cell;vertical-align: middle;}
-.head .bottom .section .picker .date{font-size:24rpx;color:gray;}
-.head .bottom .section .picker .dateTime{font-size:26rpx;}
-/*统计入住期限*/  
-.head .bottom .night{
-  width: 20%;
-  display: inline-block;
-  line-height: 180rpx;
-  position: relative;
-  text-align: center;
-  font-size: 28rpx;}
-.head .bottom .night .em3{
-  display: block;
-  height: 40rpx;
-  background-color: gainsboro;
-  width: 1px;
-  position: absolute;
-  top: 10%;
-  left: 50%;}
-.head .bottom .night .em4{
-  display: block;
-  height: 40rpx;
-  background-color: gainsboro;
-  width: 1px;
-  position: absolute;
-  top: 68%;
-  left: 50%;}
 
 /*选择条件筛选酒店*/
 .nav{
   width: 100%;
-  margin-top: 260rpx;
   line-height: 70rpx;
   font-size: 34rpx;
   color: gray;
-  box-shadow: 0rpx 4rpx 3rpx gray; }
+  box-shadow: 0rpx 4rpx 3rpx #f54556; }
+  .nav text{color:#dddddd;}
 .nav .left{
   width: 33%;
   display: inline-block;
@@ -101,7 +38,7 @@
   width: 21rpx;
   height: 10rpx;
   margin-left: 5%;
-  transform: rotate(-90deg);
+  transform: rotate(0deg);
   margin-bottom: 2%;
   }
 
@@ -109,9 +46,9 @@
 .nav >view:nth-child(2).change2{color: black;}
 .nav >view:nth-child(3).change3{color: black;}
 .nav image{transition: all 0.3s ease-in-out;}
-.nav >view:nth-child(1) image.change1{transform: rotate(90deg);}
-.nav >view:nth-child(2) image.change2{transform: rotate(90deg);}
-.nav >view:nth-child(3) image.change3{transform: rotate(90deg);}
+/* .nav >view:nth-child(1) image.change1{transform: rotate(1800deg);}
+.nav >view:nth-child(2) image.change2{transform: rotate(180deg);}
+.nav >view:nth-child(3) image.change3{transform: rotate(180deg);} */
 
 .nav .container >view { position: absolute; right: 0; top: 0; transition: all 0.5s ease-in-out; opacity: 0.5; }
 .nav .container >view:nth-child(1).active1 { right: -100%; opacity: 1; }
@@ -125,13 +62,13 @@
   display: inline-block;
   text-align: center;
   font-size: 27rpx;
-  display: none;}
+  }
 .nav .right{
   width: 34%;
   display: inline-block;
   text-align: center;
   font-size: 27rpx;
-  display: none;}
+  }
 
 /*城市搜索*/
 .container{
@@ -170,7 +107,7 @@
 .city .content .condition view { transition: all 0.3s ease-in-out; }
 .city .content .condition view:first-child.active { border-top: none; }
 .city .content .condition view.active { background: #fff; border-top: 1px solid #E8E7E7; border-bottom: 1px solid #E8E7E7; }
-.city .content .detailed .area.active { background: #DBEDF5; color: black;}
+.city .content .detailed .area.active { background: #fddadd; color: black;}
 
 .city .content .condition .one{
   width: 100%;
@@ -220,13 +157,14 @@
   line-height: 80rpx;
   letter-spacing: 3rpx;
   border-top: 2rpx solid gray;
+  background: #f54556;
    }  
 
 /*主体查询结果*/
 .main{
   width: 100%;
-  height: 624rpx;
-  overflow-y:auto; 
+  /* height: 624rpx;
+  overflow-y:auto;  */
   margin-top: 30rpx;}
 /*主体第一块酒店查询结果*/
 .main1{
@@ -237,6 +175,7 @@
   padding-bottom:20rpx; }
 /*图片*/
 .main1 .left{
+ 
   width: 20%;
   height: 120rpx;
   float: left;}
@@ -244,10 +183,10 @@
   width: 100rpx;
   height: 100rpx;
   margin-top: 10rpx;
-  border-radius: 50%;
-  box-shadow: 1px 1px 2px 1px #999;}
+  }
 /*酒店详情*/
 .main1 .middle{
+ 
   width: 50%;
   height: 120rpx;
   float: left;}
@@ -267,14 +206,28 @@
   color: gray;}    
 /*酒店价格*/
 .main1 .right{
+ 
   width: 30%;
   height: 120rpx;
   text-align: center;
   float: right;
   line-height: 120rpx;}
-.main1 .right .sign{font-size: 25rpx;font-weight: bold;}
-.main1 .right .price{font-size: 39rpx;display: inline-block;text-align: left;margin-right: 12rpx;font-weight: bold;}
+.main1 .right .sign{font-size: 25rpx;font-weight: bold;color: #f54556;}
+.main1 .right .price{font-size: 39rpx;display: inline-block;margin-right: 12rpx;font-weight: bold;color: #f54556;}
 .main1 .right .rise{font-size: 25rpx; color: gray;}  
 
 .active{
   background-color: white;}
+  .allCase{display:flex;width:80%;margin: 0 auto;height:100rpx;justify-content: center;align-items: center;color:#f54556;font-size:28rpx;font-family: "微软雅黑"}
+  .allCase text{display: inline-block;position: relative;top:-6rpx;}
+  .allCase text:first-child{left:-14rpx;}
+  .allCase text:last-child{left:14rpx;}
+  .price_box{color:#000;background:#fff;padding:50rpx;}
+  .price .bottom{font-size:32rpx;font-family: "微软雅黑"}
+  .price .bottom .yes{border:none;}
+  .price .bottom .empty{color:#f54556;}
+  .price_box text{color:#000;display: inline-flex;width:200rpx;height:60rpx;border:1px solid #cccccc;justify-content: center;align-items: center;border-radius: 12rpx;font-size:28rpx;}
+  .price_box text:last-child{margin-left:45px;}
+  .price_box text.on{background:#f54556;border: 1px solid #f54556;color:#fff;}
+  .price_box .sort{color:#d2d2d2;font-size:28rpx;}
+  

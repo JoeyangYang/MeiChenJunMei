@@ -7,7 +7,47 @@ Page({
    * 页面的初始数据
    */
   data: {
-    testHandle: '-1'
+    testHandle: '-1',
+    datas: [
+      [
+        {
+          id: '1',
+          image: '../../../img/aboutme_circle.jpg',
+        },
+        {
+          id: '2',
+          image: '../../../img/aboutme_circle2.jpg',
+        }
+      ],
+      [
+        {
+          id: '1',
+          image: '../../../img/aboutme_circle.jpg',
+        },
+        {
+          id: '2',
+          image: '../../../img/aboutme_circle2.jpg',
+        }
+      ],
+      [
+        {
+          id: '1',
+          image: '../../../img/aboutme_circle.jpg',
+
+        },
+        {
+          id: '2',
+          image: '../../../img/aboutme_circle2.jpg',
+        }
+      ],
+
+
+    ],
+    indicatorDots: true,
+    autoplay: true,
+    interval: 2000,
+    duration: 1500,
+    indicatorActiveColor: "#f54556"
   },
 
   //点击事件
@@ -63,6 +103,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log("options");
+    console.log(options);
     var that = this;
     that.setData({
       date: options.date,

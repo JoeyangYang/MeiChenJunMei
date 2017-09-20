@@ -1,75 +1,82 @@
 <!--pages/index/index.wxml-->
 <!--大容器-->
 <view class="all">
-  <!--头部-->
+  <!--头部--> 
   <view class="header relative">
-     <image src="/img/3.png"></image> 
+     <image src="/img/index_bg.jpg"></image> 
     <view class="head1">
       <!--上-->
       <view class="top Center">
-        <view class="left">昆明</view>
-        <view class="right">位置</view>
+        <view class="left">美诚均美医疗美容</view>
+        <view class="right"><image src='../../../img/project_icon.png'></image>项目</view>
       </view>
-      <!--中-->
-      <view class="middle border Center">
-        <!--入住日期-->
-        <view class="section" style="display:inline-block;">
-            <picker mode="date" value="{{date}}" start="{{today}}" bindchange="bindDateChange" >
-              <view class="picker">
-                <view class="date">入住日期</view> 
-                <text class="dateTime">{{date}}</text>
-              </view>
-            </picker>
-          </view>
-        <!--统计入住时间-->
-        <view class="night">
-          <em class="em3"></em>
-          <text class="nightNum">{{nightNum}}晚</text>
-          <em class="em4"></em>  
-        </view>
-        <!--退房时间-->
-        <view class="section" style="display:inline-block;">
-            <picker mode="date" value="{{date}}"  bindchange="bindDateChangeEnd" start="{{date}}" >
-              <view class="picker">
-                <view class="date">离店日期</view> 
-                <text class="dateTime">{{dateEnd}}</text>  
-              </view>
-            </picker>
-        </view>
-      </view>
+      
       <!--下-->
       <view class="bottom Center">
         <navigator url='/pages/hotel/index/index?date={{date}}&nightNum={{nightNum}}&dateEnd={{dateEnd}}'>
-          <button class='bg-blue'>查询酒店</button>
+          <button>查询</button>
         </navigator>
       </view>
     </view>
   </view>
   <!--主体-->
   <view class="main">
-    <view class="main1 relative">
+    <view class="main1 relative" >
       <em class="em1"></em>
       <text class="brand">嘉优隆品牌</text>
       <em class="em2"></em>
     </view>
     <swiper indicator-dots="{{indicatorDots}}"
-    autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{indicatorActiveColor}}" style="height:180px;">
     <block wx:key="" wx:for="{{datas}}" wx:for-index="index" wx:for-item="val1">
       <swiper-item bindtap="top">
+      <view class='main2_box'>
         <block wx:key="" wx:for="{{val1}}" wx:for-item="val2">
+        
           <navigator url="../test/index?id={{val2.id}}" class="nav">
-           <view class="main2">
+           <view class="main2" >
                <view class='one'>
                   <image src="{{val2.image}}"></image>
                </view>
                <view class='two'>
                   {{val2.name}}
                </view>
+               <view class='three'>
+                    <image src='../../../img/我的.png' ></image>
+                    某某正在直播
+                    <view><image src='../../../img/我的.png' ></image>6099</view>
+                </view>
            </view> 
           </navigator>
+         
         </block>
+         </view><!--main2_box结束-->
       </swiper-item>
     </block>
     </swiper>
   </view>
+  
+<view class="words section">
+    <scroll-view scroll-y style="height: 200rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    云南美诚均美美容医院隶属于某某医疗集团，均美医疗集团创建于1
+    999年，集团总部设在上海。是目前国内早从事医疗投资的集团企业，也
+    是国内规模大的医学美容连锁机构。其经营范围涉足医疗、保健、科研
+    等多个医疗卫生领域，业务形态以专科整形美容医院为主。多年来，云
+    南美诚均美美容医院潜心于整形美容行业，已先后在昆明、重庆、苏州、
+    广州等30城设立整形连锁机构。云南美诚均美美容医院隶属于某某医疗集团，均美医疗集团创建于1
+    999年，集团总部设在上海。是目前国内早从事医疗投资的集团企业，也
+    是国内规模大的医学美容连锁机构。其经营范围涉足医疗、保健、科研
+    等多个医疗卫生领域，业务形态以专科整形美容医院为主。多年来，云
+    南美诚均美美容医院潜心于整形美容行业，已先后在昆明、重庆、苏州、
+    广州等30城设立整形连锁机构。云南美诚均美美容医院隶属于某某医疗集团，均美医疗集团创建于1
+    999年，集团总部设在上海。是目前国内早从事医疗投资的集团企业，也
+    是国内规模大的医学美容连锁机构。其经营范围涉足医疗、保健、科研
+    等多个医疗卫生领域，业务形态以专科整形美容医院为主。多年来，云
+    南美诚均美美容医院潜心于整形美容行业，已先后在昆明、重庆、苏州、
+    广州等30城设立整形连锁机构。
+    </scroll-view>
+</view><!--words结束-->
+
 </view>
+    
+ 

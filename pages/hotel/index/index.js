@@ -9,31 +9,9 @@ Page({
     flag: "true",
     nightNum: '1',
     display: false,
-    searchHandle: '0'
+    searchHandle: '0',
+    imgSrc1:'../../../img/top_bg.jpg'
   },
-
-  bindDateChange: function (e) {
-    var that = this;
-    var startTime = new Date(e.detail.value).getTime();
-    that.setData({
-      startTime: startTime,
-      date: e.detail.value
-    });
-  },
-  bindDateChangeEnd: function (e) {
-
-    var that = this;
-    var starTime = that.data.startTime;
-    var endTime = new Date(e.detail.value).getTime();
-    var result = ((((endTime - starTime) / 1000) / 60) / 60) / 24;
-    that.setData({
-      nightNum: result,
-      dateEnd: e.detail.value
-    })
-  },
-
-
-
   tabChange:function(e){
     var that=this;
     var searchHandle = that.data.searchHandle;
@@ -75,86 +53,60 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-
-    //默认入住时间，离店时间
-    var y = data.getFullYear();
-    var m = data.getMonth() + 1;
-    m = m < 10 ? '0' + m : m;
-    var d = data.getDate();
-    var dd = d + 1;
-    var ddS = dd < 10 ? ('0' + dd) : dd;
-    var dS = d < 10 ? ('0' + d) : d;
-    var date = y + '-' + m + '-' + dS;
-    var dateEnd = y + '-' + m + '-' + ddS;
-    var startTime = new Date(date).getTime();
-    var endTime = new Date(dateEnd).getTime();
-    this.setData({
-      today: date,
-      date: date,
-      dateEnd: dateEnd,
-      startTime: startTime,
-      endTime: endTime
-    });
-
-    that.setData({
-      date: options.date,
-      nightNum: options.nightNum,
-      dateEnd: options.dateEnd
-    });  
-
     var hotelList = [
       {
         id: '1',
-        name: "附近",
+        name: "微整形中心",
         data: [
           {
             id: '1',
-            name: "700米",
+            name: "深V假体丰胸",
             data: []
           },
           {
             id: '2',
-            name: "600米",
+            name: "韩式隆鼻",
             data: []
           },
           {
             id: '3',
-            name: "500米",
+            name: "双眼皮",
             data: []
           },
           {
             id: '4',
-            name: "400米",
+            name: "祛眼袋",
             data: []
           },
           {
             id: '5',
-            name: "300米",
+            name: "全鼻整形",
             data: []
           },
           {
             id: '6',
-            name: "200米",
+            name: "全鼻整形",
             data: []
           },
           {
             id: '7',
-            name: "100米",
+            name: "全鼻整形",
             data: []
           }
         ]
       },
       {
       id: '2',
-      name: '行政区',
+      name: '整形中心',
       data: [
         {
           id: '1',
-          name: '五华区',
+          name: '韩式隆鼻',
           data: [
             {
               id: "1",
-              name: '嘉优隆酒店1(五华区)',
+              name: '面部紧致提升',
+              effect:"国际前沿微创技术",
               data: {
                 id:1,
                 address: '昆明市五华区XXXXXXXXX号',
@@ -200,7 +152,8 @@ Page({
             },
             {
               id: "2",
-              name: '嘉优隆酒店2(五华区)',
+              name: '急速纳米美艳',
+              effect:'避开大血管 更安全 自然',
               data: {
                 id: 2,
                 address: '昆明市五华区XXXXXXXXX2号',
@@ -229,7 +182,8 @@ Page({
             },
             {
               id: "3",
-              name: '嘉优隆酒店3(五华区)',
+              name: '玻尿酸',
+              effect:'改变时间的烙印',
               data: {
                 id: 3,
                 address: '昆明市五华区XXXXXXXXX2号',
@@ -261,11 +215,12 @@ Page({
 
         {
           id: '2',
-          name: '盘龙区',
+          name: '韩式隆鼻',
           data: [
             {
               id:"1",
-              name: '嘉优隆酒店1(盘龙区)',
+              name: '敏感肌综合疗法',
+              effect:'治疗皮肤泛红瘙痒等',
               data: {
                 id: 4,
                 address: '昆明市盘龙区XXXXXXXXX号',
@@ -294,7 +249,8 @@ Page({
             },
             {
               id: "2",
-              name: '嘉优隆酒店2(盘龙区)',
+              name: '原生俏鼻',
+              effect:'精雕九大区域 重建结构',
               data: {
                 id: 5,
                 address: '昆明市盘龙区XXXXXXXXX2号',
@@ -355,7 +311,7 @@ Page({
 
         {
           id: '3',
-          name: '西山区',
+          name: '韩式隆鼻',
           data: [
             {
               id: "1",

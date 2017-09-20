@@ -8,37 +8,34 @@ page { font-family: 'Microsoft YaHei'; }
 .border{border-bottom: 1px solid gainsboro;border-top: 1px solid gainsboro;}
 
 /*头部*/
-.header{width: 100%; height: 400rpx;background-color: red;}
-.header image{width: 100%;height: 100%;}
+.header{width: 99.5%; }
+.header image{width:100%;height:384rpx;}
 
 /*头部第一块*/
-.head1{width: 90%;position: absolute;background-color: white;left: 5%;top: 65%;border-radius: 12rpx;box-shadow: gray 0rpx 5rpx 10rpx;}
+.head1{width: 90%;position: absolute;background-color: white;left: 5%;top: 60%;border-radius: 12rpx;box-shadow: gray 0rpx 5rpx 10rpx;}
 /*上*/
-.head1 .top{width: 80%;margin-top: 10rpx;margin-bottom: 8rpx;}
-.head1 .top .left{width: 70%;display: inline-block;padding: 20rpx; box-sizing: border-box;font-size: 33rpx;}
-.head1 .top .right{width: 30%;display: none;padding: 20rpx;border-right: 1px gainsboro solid; box-sizing: border-box;background-color: red;}
-/*中*/
-.head1 .middle{width: 80%;text-align: center;display:table;}
-.head1 .middle .section{align-items: center;justify-content: center;display: table-cell;vertical-align: middle;}
-.head1 .middle .section .picker .date{font-size:24rpx;color:gray;}
-.head1 .middle .section .picker .dateTime{font-size:26rpx;}
-.head1 .middle .night{width: 20%;display: inline-block;line-height: 161rpx;position: relative;text-align: center;}
-.head1 .middle .night .nightNum{font-size:28rpx;}
-.head1 .middle .night .em3{display: block;height: 40rpx;background-color: gainsboro;width: 1px;position: absolute;top: 10%;left: 50%;}
-.head1 .middle .night .em4{display: block;height: 40rpx;background-color: gainsboro;width: 1px;position: absolute;top: 68%;left: 50%;}
+.head1 .top{width: 80%;padding:30rpx 0;margin-bottom: 8rpx;font-size: 33rpx;border-bottom:1px solid #dedede;}
+.head1 .top .left{width: 66%;display: inline-block;padding: 20rpx; box-sizing: border-box;}
+.head1 .top .right{width: 34%;padding: 20rpx;border-left: 1px gainsboro solid; box-sizing: border-box;display: inline-block;padding-top:15rpx;text-align: right;}
+.head1 .top .right image{width:44rpx;height:44rpx;position: relative;top:5px;left:10px;margin-right:15px;}
 /*下*/
 .head1 .bottom{width: 80%;}
-.head1 .bottom button{width: 100%;color: white ;line-height: 80rpx;margin-top: 25rpx;margin-bottom: 52rpx;
-  box-shadow: 0rpx 6rpx 3rpx #A8DBFB;font-size: 28rpx; letter-spacing: 4rpx;}
+.head1 .bottom button{width: 100%;color: white ;line-height: 80rpx;margin-top: 32rpx;margin-bottom: 36rpx;
+  box-shadow: 0rpx 6rpx 3rpx #7d7d7d;font-size: 28rpx; letter-spacing: 4rpx;background: #f54556}
 /*主体*/
-.main{width: 100%;height: 400rpx;margin-top: 46%;}
+.main{width: 99.5%;height: 400rpx;margin-top: 23%;}
 .main1{width: 80%; height: 80rpx;margin: 0px auto;line-height: 80rpx;text-align: center;}
 .main1 .em1{display: block;width: 30%; height: 1px;background-color: gainsboro;margin-top: 7%;float: left;}
 .main1 .em2{display: block;width: 30%; height: 1px;background-color: gainsboro;margin-top: 7%;float: right;}
 .main1 .brand{ font-size: 28rpx;}
-.main2{width: 120rpx;height: 165rpx;margin: 0px auto;
-margin-top: 3%;float: left;margin-left: 13%;}
-.main2 .one{
-  width: 120rpx;width: 120rpx;}
-.main2 .one image{width: 120rpx;height: 120rpx;border-radius: 50%;}
-.main2 .two{width: 136rpx;font-size: 28rpx;width: 100%;height: 40rpx;line-height: 40rpx;text-align: center;margin-top: 5rpx;}
+.main2_box{display:block;height:100%;font-size:24rpx;}
+.main2{width:42.5%;float: left;margin-left:5%;background: #fff;box-shadow: 0rpx 6rpx 3rpx #dadada;height:100%;padding-bottom:16rpx;font-size:24rpx;}
+.main2 .one{}
+.main2 .one image{width: 100%;height: 174rpx;}
+.main2 .two{width: 136rpx;font-size: 28rpx;width: 100%;height: 40rpx;line-height: 40rpx;text-align: left;margin-top: 5rpx;}
+.main2 .three{position: relative;}
+.main2 .three image{width:30rpx;height:30rpx;position: relative;top:2px;}
+.main2 .three view{display: inline-block;text-align: right;position: absolute;right:2px;}
+.all .words{width:89.5%;color:#cdcdcd;font-family: '微软雅黑';font-size:20rpx;border-top:1px solid #dedede;margin:10rpx 5%;line-height: 40rpx;padding-top:10rpx;text-indent: 39rpx;}
+
+

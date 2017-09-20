@@ -8,5 +8,5 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 }
-.bg-blue{background: linear-gradient(#3399ff,#3ab3ff);}
-.color-blue{color: #3ab3ff;}
+.bg-blue{background: #f54556;}
+.color-blue{color: #f54556;}

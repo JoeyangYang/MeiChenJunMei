@@ -20,7 +20,7 @@
                   <text class="grey">{{item.date}}</text>
               </view>
               <view class="rt entry">
-                 <text class="price color-blue">+{{item.score}}</text>
+                 <text class="price">+{{item.score}}</text>
               </view>
             </view>
             <view class="bg-activity {{item.active}}"></view>

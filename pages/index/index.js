@@ -15,36 +15,51 @@ Page({
       [
         {
           id: '1',
-          image: '../../img/hotel3.png',
-          name: '汉庭酒店'
+          image: '../../img/live.jpg',
+          name: '欢迎大家'
         },
         {
           id: '2',
-          image: '../../img/hotel2.png',
-          name: '汉庭酒店'
+          image: '../../img/live.jpg',
+          name: '欢迎大家'
+        }
+      ],
+      [
+        {
+          id: '1',
+          image: '../../img/live.jpg',
+          name: '欢迎大家'
         },
         {
-          id: '3',
-          image: '../../img/hotel4.png',
-          name: '汉庭酒店'
+          id: '2',
+          image: '../../img/live.jpg',
+          name: '欢迎大家'
         }
-      ]
+      ],
+      [
+        {
+          id: '1',
+          image: '../../img/live.jpg',
+          name: '欢迎大家'
+        },
+        {
+          id: '2',
+          image: '../../img/live.jpg',
+          name: '欢迎大家'
+        }
+      ],
+      
       
     ],
-    indicatorDots: false,
+    indicatorDots: true,
     autoplay: true,
     interval: 2000,
-    duration: 1500
+    duration: 1500,
+    indicatorActiveColor:"#f54556"
   },
-  bindDateChange: function (e) {
-    var that = this;
-    var startTime = new Date(e.detail.value).getTime();
-    console.log(e.detail.value);
-    that.setData({
-      startTime: startTime,
-      date: e.detail.value
-    });
-  },
+ 
+ 
+  
   bindDateChangeEnd: function (e) {
     var that = this;
     var starTime = that.data.startTime;
@@ -130,5 +145,46 @@ Page({
    */
   onShareAppMessage: function () {
   
-  }
+  },
+  scroll: function (e) {
+    var that = this;
+    console.log("我是scroll");
+    console.log(e);
+    var scrollTop = e.detail.scrollTop;
+    var scrollHeight = e.detail.scrollHeight;
+    console.log("scrollHeight:" + scrollHeight);
+    console.log("scrollTop:"+scrollTop);
+    // that.setData({
+    //   scrollTop: scrollTop,
+    //   scrollHeight: scrollHeight
+    // });
+
+
+
+    var speed = 20;
+    // var marqueeVal = setInterval(function () {
+
+    //   scrollTop += 20;
+    //   // that.setData({
+    //   //   scrollTop: scrollTop,
+    //   // });
+    //   scrollTop=scrollTop;
+    //   if (scrollTop > 400) {
+    //     scrollTop = 0;
+    //     scrollTop += 20;
+    //     scrollTop = scrollTop;
+    //     // that.setData({
+    //     //   scrollTop: scrollTop
+    //     // });
+    //   }
+    // }, 1000);
+
+  },
+  upper: function (e) {
+    console.log("我是upper");
+    console.log(e)
+  },
+  lower: function (e) {
+
+  },
 })

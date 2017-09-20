@@ -37,7 +37,7 @@ Page({
           if (data.code == '200') {
             data.data.forEach(function (val, key) {
               if (val.status == '0') {
-                data.data[key].status = '待入住';
+                data.data[key].status = '待手术';
                 data.data[key].refund = 'show';
               }
               if (val.status == '1') {
@@ -90,7 +90,7 @@ Page({
           if (data.code == '200') {
             data.data.forEach(function (val, key) {
               if (val.status == '0') {
-                data.data[key].status = '待入住';
+                data.data[key].status = '待手术';
                 data.data[key].refund = 'show';
               }
               if (val.status == '1') {

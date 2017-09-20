@@ -1,32 +1,38 @@
 {
   "pages":[
+    
+    "pages/me/index/index",
+    "pages/order/index/index",
+   "pages/aboutUs/index/index",
     "pages/index/index",
     "pages/hotel/detail/index",
     
     "pages/hotel/order/index",
     
     "pages/hotel/order_pay/index",
-    "pages/me/index/index",
+    
     
     "pages/hotel/index/index",
     "pages/me/score/index",
    
     
-    "pages/order/index/index",
+    
     "pages/order/detail/index",
     "pages/me/refund/index",
    
     "pages/me/score_rule/index",
-    "pages/me/phone_update/index"
+    "pages/me/phone_update/index",
     
-    
-  
+    "pages/words/index",
+    "pages/scorll/index",
+    "pages/wordsOne/index"
+
   
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "嘉优隆精品酒店",
+    "navigationBarTitleText": "美诚均美医疗美容",
     "navigationBarTextStyle":"black"
   },
   "tabBar": {
@@ -38,15 +44,26 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "iconPath": "img/预定.png",
+        "iconPath": "img/home_icon.png",
         "selectedIconPath": "img/预定2.png",
-        "text": "预定"
+        "text": "首页"
       },
       {
         "pagePath": "pages/me/index/index",
-        "iconPath": "img/我的.png",
+        "iconPath": "img/case_icon.png",
         "selectedIconPath": "img/我的2.png",
-        "text": "我的"
+        "text": "成功案例"
+      },
+      {
+        "pagePath": "pages/me/index/index",
+        "iconPath": "img/member_icon.png",
+        "selectedIconPath": "img/我的2.png",
+        "text": "会员中心"
+      },{
+        "pagePath": "pages/aboutUs/index/index",
+        "iconPath": "img/a.png",
+        "selectedIconPath": "img/我的2.png",
+        "text": "关于我们"
       }
       
       

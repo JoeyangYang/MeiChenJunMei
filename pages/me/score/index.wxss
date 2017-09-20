@@ -12,7 +12,7 @@
 .score .scorePub .bg-activity.active { height: 100%; width: 100%; left: 0; top: 0;border-radius: 10px; }
 .score .scorePub .block { width: 100%; position: relative; z-index: 1; }
 .score .scorePub .entry{flex-direction: row;}
-.score .scorePub .entry text.price{font-weight: bold;font-size:39rpx;}
+.score .scorePub .entry text.price{font-weight: bold;font-size:39rpx;color:#f54556;}
 .score .scorePub .entry.lt{width:70%; float: left;}
 .score .scorePub .entry.lt text{display: block;}
 .score .scorePub .entry.lt text.grey{color:#cdcdcd;}

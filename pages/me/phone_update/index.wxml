@@ -1,7 +1,7 @@
 <!--pages/me/phone_update/index.wxml-->
 <view class="phone_update">
    <view  class="check">
-      <input type="number" placeholder="输入新的手机号"/>
+      <input type="number" placeholder="输入新的手机号" bindinput='bindInput'/>
       <button class='bg-blue'>发送验证码</button>
    </view>
     <input type="number" placeholder="输入验证码" class="code"/>  
@@ -14,6 +14,6 @@
         
     </view>
      <view class="show {{on}}">
-       <text>更换成功</text>
-       <text>将在{{second}}秒后自动跳转</text>
+       <text class='success'>更换成功</text>
+       <text class='skip'><text class='dot'>. . .</text>页面将在{{second}}秒后自动跳转<text class='dot'>. . .</text></text>
     </view>
