@@ -85,9 +85,8 @@ Page({
     //var scrollTop = that.data.scrollTop;
     //var scrollHeight = that.data.scrollHeight;
     
-    var speed = 20;
+    // var speed = 20;
     // var marqueeVal = setInterval(function () {
-     
     //   scrollTop += 20;
     //   that.setData({
     //     scrollTop: scrollTop,

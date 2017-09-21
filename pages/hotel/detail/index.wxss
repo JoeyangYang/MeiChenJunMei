@@ -1,5 +1,5 @@
 /* pages/me/score/index.wxss */
-.score{font-family: "微软雅黑";position: relative;}
+.score{font-family: "微软雅黑";position: relative;height:100%;}
 .score .bg_box{position:fixed;top:0;left:0;width:99.5%;z-index:100; }
 .score .bg{color: #fff;position: relative;background: #fff;}
 .score .bg .num{width:100%;position: absolute;bottom:80rpx;left:0;text-align: center;}
@@ -22,3 +22,8 @@
 .main2 .three{position: relative;}
 .main2 .three image{width:30rpx;height:30rpx;position: relative;top:2px;}
 .main2 .three view{display: inline-block;text-align: right;position: absolute;right:2px;}
+h
+.main2 .three{position: relative;}
+.main2 .three image{width:30rpx;height:30rpx;position: relative;top:2px;}
+.main2 .three view{display: inline-block;text-align: right;position: absolute;right:2px;}
+.foot{width:100%;position: absolute;bottom:0;background: #f54556;height:90rpx;display: flex;justify-content: center;align-items: center;color:#fff;font-size:32rpx;margin-top:60rpx;border-top:6rpx solid #d7d7d7;}

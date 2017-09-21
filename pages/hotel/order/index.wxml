@@ -28,14 +28,14 @@
     <view class='main2'>
       <view class='top'>
         <view class='left'>
-          <text>主体大床房</text>
+          <text>手术</text>
         </view>
         <view class='right'>
           <text class='num'>1</text><text class='between'>间</text>
         </view>
       </view>
       <view class='middle'>
-        <view class='left'>入住人</view>
+        <view class='left'>预约人</view>
         <view class='right'>{{userName}}</view>
       </view>
       <view class='bottom'>

@@ -13,6 +13,7 @@ Page({
     imgSrc1:'../../../img/top_bg.jpg'
   },
   tabChange:function(e){
+    console.log(1);
     var that=this;
     var searchHandle = that.data.searchHandle;
     var index = e.currentTarget.dataset.active;
@@ -488,10 +489,17 @@ Page({
   },
 
   addChange:function(e){
+    console.log("e");
+    console.log(e);
     var that=this;
     var singleHotel = e.currentTarget.dataset.singlehotel;
+    console.log("singlHotel");
+    console.log(singleHotel);
     wx.setStorage({
       key: 'singleHotel',
+      data: singleHotel
+    });
+    that.setData({
       data: singleHotel
     });
   },

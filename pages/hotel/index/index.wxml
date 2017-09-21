@@ -20,7 +20,31 @@
     <!--定位全城搜索-->
     <view class='container'>
     <!--点击项目出现的隐藏块-->
-      <view class='brand {{searchStyle}}'></view>
+      <view class='brand {{searchStyle}}'>
+        <view class='main'>
+    <!--主体第一块-->
+    <block wx:key="" wx:for="{{listAll}}" wx:for-item="item">
+      <navigator data-singlehotel="{{item}}" url='/pages/hotel/detail/index?date={{date}}&nightNum={{nightNum}}&dateEnd={{dateEnd}}' bindtap='addChange'>
+        <view class="main1 center">
+        <!--图片-->
+        <view class="left">
+          <image src="../../../img/11.png"></image>
+        </view>
+        <!--酒店详情-->
+        <view class="middle">
+          <view  class="hotel"><text>{{item.name}}</text></view>
+          <view  class="distance"><text>{{item.effect}}</text></view>
+        </view>
+        <!--价格-->
+        <view class="right"><text class='sign'>￥</text><text class="price">{{item.data.price}}</text><text class='rise'>起</text></view>
+        </view>
+      </navigator>
+    </block>
+    <view class="allCase">
+      <text>. . .</text>已显示全部<text>. . .</text>
+    </view><!--allCase结束-->
+  </view>
+      </view>
       <!--点击价格出现的隐藏块-->
       <view class='price {{searchStyle}} city'>
          <view class="price_box">
@@ -62,7 +86,7 @@
   <view class='main'>
     <!--主体第一块-->
     <block wx:key="" wx:for="{{listAll}}" wx:for-item="item">
-      <navigator data-singlehotel="{{item}}" url='/pages/hotel/detail/index?date={{date}}&nightNum={{nightNum}}&dateEnd={{dateEnd}}' bindtap='addChange'>
+      <navigator data-singlehotel="{{item}}" url='/pages/hotel/detail/index?date={{data}}&id=1' bindtap='addChange'>
         <view class="main1 center">
         <!--图片-->
         <view class="left">

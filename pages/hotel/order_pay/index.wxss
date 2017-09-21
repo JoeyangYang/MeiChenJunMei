@@ -80,7 +80,7 @@ page{background-color: #F8F8F8;}
   border-radius: 0px;}   
 
 .payment{
-  background-color: gainsboro;
+  background-color: #f54556;
 }
 .active{
   background: linear-gradient(#3399ff,#3ab3ff);

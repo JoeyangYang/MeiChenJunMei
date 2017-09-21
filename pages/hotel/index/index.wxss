@@ -84,7 +84,7 @@
   height: 600rpx;
   opacity: 1;}
    
-
+.brand{width:100%;background: #fff;color:#000;}
 
 /*内容块*/
 .city .content{

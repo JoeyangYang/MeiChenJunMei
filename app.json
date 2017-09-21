@@ -1,10 +1,12 @@
 {
   "pages":[
     
+   "pages/index/index",
     "pages/me/index/index",
+    "pages/case/index",
     "pages/order/index/index",
    "pages/aboutUs/index/index",
-    "pages/index/index",
+    
     "pages/hotel/detail/index",
     
     "pages/hotel/order/index",
@@ -22,10 +24,11 @@
    
     "pages/me/score_rule/index",
     "pages/me/phone_update/index",
-    
-    "pages/words/index",
-    "pages/scorll/index",
     "pages/wordsOne/index"
+   
+    
+
+    
 
   
   ],
@@ -49,7 +52,7 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/me/index/index",
+        "pagePath": "pages/case/index",
         "iconPath": "img/case_icon.png",
         "selectedIconPath": "img/我的2.png",
         "text": "成功案例"

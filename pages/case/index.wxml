@@ -1,0 +1,23 @@
+<!--pages/case/index.wxml-->
+<view class="case_box">
+    <view class="bg_black"></view>
+    <view class="bg_grey"></view>
+    <block wx:for="{{case}}" wx:key="">
+        <view class='wrap_box'>
+            <view class='wrap'>
+                <view class='content'>
+                    <image src='{{item.beforeSrc}}'></image>
+                    <text>{{item.beforeText}}</text>
+                </view><!--content结束-->
+                <view class='img'>
+                    <image src='../../img/red_arrow.png' class='arrow'></image>
+                </view>
+                <view class='content'>
+                    <image src='{{item.afterSrc}}'></image>
+                    <text>{{item.afterText}}</text>
+                </view><!--content结束-->
+            </view><!--wrap结束-->
+            <view class='line'></view>
+        </view><!--wrap_box结束-->
+    </block>
+</view><!--case_box结束-->

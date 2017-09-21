@@ -1,5 +1,0 @@
-<!--pages/words/index.wxml-->
-<view class="{{words}}" style="height:{{height}};">
-    <view class="{{con1}}">{{text}}</view>
-    <view class="{{con2}}"></view>
-</view><!--words结束-->
