@@ -10,20 +10,26 @@ Page({
     nightNum: '1',
     display: false,
     searchHandle: '0',
-    imgSrc1:'../../../img/top_bg.jpg'
+    imgSrc: '../../../img/top_bg1.jpg',
+    hidden:false,
+   zIndex:"-1",
   },
   tabChange:function(e){
-    console.log(1);
+    console.log(e);
     var that=this;
     var searchHandle = that.data.searchHandle;
     var index = e.currentTarget.dataset.active;
     var listAll = [];
+    that.setData({
+      hidden: true
+    });
     if(searchHandle == index) {
       that.setData({
         color: '',
         display: false,
         searchStyle: '',
-        searchHandle: '0'
+        searchHandle: '0',
+        zIndex:"-1",
       });
     }else {
       var display = e.currentTarget.dataset.display;
@@ -34,7 +40,10 @@ Page({
         color: color,
         display: true,
         searchStyle: searchStyle,
-        searchHandle: index
+        searchHandle: index,
+        zIndex:"1",
+        imgSrc:"../../../img/top_bg"+index+".jpg"
+
       });
     }
 
@@ -54,6 +63,18 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    wx.getSystemInfo({
+      success: function(res) {
+        var screenHeight = res.screenHeight;
+        var windowHeight = res.windowHeight;
+        var windowWidth = res.windowWidth;
+        that.setData({
+          screenHeight: screenHeight,
+          windowHeight: windowHeight,
+          windowWidth : windowWidth
+        });
+      },
+    })
     var hotelList = [
       {
         id: '1',
@@ -497,10 +518,12 @@ Page({
     console.log(singleHotel);
     wx.setStorage({
       key: 'singleHotel',
-      data: singleHotel
-    });
-    that.setData({
-      data: singleHotel
+      data: singleHotel,
+      success:function(res){
+        wx.navigateTo({
+          url: '/pages/hotel/detail/index',
+        })
+      }
     });
   },
 

@@ -7,6 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    width: "300",
+    height: "100",
     second:3,
     className:'model',
      on:'on1' 
@@ -56,13 +58,21 @@ confirm:function(e){
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that=this;
+    //获取设备信息
     wx.getSystemInfo({
       success: function (res) {
-        console.log(res)
-        winHeight = res.windowHeight;
-        winWidth = res.windowWidth;
-      }
-    })  
+        that.setData({
+          windowWidth: res.windowWidth
+        });
+      },
+    })
+    var elementWidth = that.data.width;
+    var windowWidth = that.data.windowWidth;
+    var left = (windowWidth - elementWidth) / 2;
+    that.setData({
+      left: left
+    });
     
   },
 

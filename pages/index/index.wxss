@@ -24,7 +24,7 @@ page { font-family: 'Microsoft YaHei'; }
   box-shadow: 0rpx 6rpx 3rpx #7d7d7d;font-size: 28rpx; letter-spacing: 4rpx;background: #f54556}
 /*主体*/
 .main{width: 99.5%;height: 400rpx;margin-top: 23%;}
-.main1{width: 80%; height: 80rpx;margin: 0px auto;line-height: 80rpx;text-align: center;}
+.main1{width: 80%; height: 80rpx;margin: 0px auto;line-height: 80rpx;text-align: center;margin-top:-20rpx;margin-bottom:20rpx;}
 .main1 .em1{display: block;width: 30%; height: 1px;background-color: gainsboro;margin-top: 7%;float: left;}
 .main1 .em2{display: block;width: 30%; height: 1px;background-color: gainsboro;margin-top: 7%;float: right;}
 .main1 .brand{ font-size: 28rpx;}
@@ -36,6 +36,34 @@ page { font-family: 'Microsoft YaHei'; }
 .main2 .three{position: relative;}
 .main2 .three image{width:30rpx;height:30rpx;position: relative;top:2px;}
 .main2 .three view{display: inline-block;text-align: right;position: absolute;right:2px;}
-.all .words{width:89.5%;color:#cdcdcd;font-family: '微软雅黑';font-size:20rpx;border-top:1px solid #dedede;margin:10rpx 5%;line-height: 40rpx;padding-top:10rpx;text-indent: 39rpx;}
+.all .words{width:89.5%;color:#cdcdcd;font-family: '微软雅黑';font-size:20rpx;border-top:1px solid #dedede;margin:10rpx 5%;line-height: 40rpx;padding-top:10rpx;text-indent: 39rpx;margin-bottom:30px;margin-top:20px;}
+.wrap{height:200rpx;overflow: hidden;position: absolute;top:30;left: 100;width: 100%}
+.wrap text{margin:0;height: 200rpx;width: 100%;display: block;}
+.wrap .content text{
+        position: absolute;
+      }
+      @-webkit-keyframes anim1{
+        0% {top: 100%;opacity: 1}
+        /* 50% {top: -30px;opacity: 1}
+        75% {top: -30px ;opacity: 0} */
+        100%{top:-100%;opacity: 0}
+      }
+       @-webkit-keyframes anim2{
+     
+        0% {top:100%;opacity: 0}
+        /* 25% {top: -30px;opacity: 0}
+        50% {top: -30px;opacity: 1} */
+        100%{top:-100%;opacity: 1}
+      } 
+
+      .wrap .content text:nth-child(1){
+        
+        animation: anim1 8s linear infinite;
+      }
+      
+        .wrap .content text:nth-child(2){
+    
+        animation: anim2 8s linear infinite;
+      }  
 
 

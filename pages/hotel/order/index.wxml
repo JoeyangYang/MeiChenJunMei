@@ -14,7 +14,7 @@
               <text>{{hotelName}}</text>
               </view>
               <view class='time'>
-                <text>{{date}} —— {{dateEnd}}      共{{nightNum}}晚</text>
+                <text>{{date}}</text>
               </view>
               <view class='address'>
                 <text>{{address}}</text>

@@ -23,11 +23,11 @@
   <view class="main">
     <view class="main1 relative" >
       <em class="em1"></em>
-      <text class="brand">嘉优隆品牌</text>
+      <text class="brand">美诚均美医疗美容</text>
       <em class="em2"></em>
     </view>
     <swiper indicator-dots="{{indicatorDots}}"
-    autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{indicatorActiveColor}}" style="height:180px;">
+    autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{indicatorActiveColor}}" style="height:164px;">
     <block wx:key="" wx:for="{{datas}}" wx:for-index="index" wx:for-item="val1">
       <swiper-item bindtap="top">
       <view class='main2_box'>
@@ -56,25 +56,11 @@
     </swiper>
   </view>
   
-<view class="words section">
-    <scroll-view scroll-y style="height: 200rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-    云南美诚均美美容医院隶属于某某医疗集团，均美医疗集团创建于1
-    999年，集团总部设在上海。是目前国内早从事医疗投资的集团企业，也
-    是国内规模大的医学美容连锁机构。其经营范围涉足医疗、保健、科研
-    等多个医疗卫生领域，业务形态以专科整形美容医院为主。多年来，云
-    南美诚均美美容医院潜心于整形美容行业，已先后在昆明、重庆、苏州、
-    广州等30城设立整形连锁机构。云南美诚均美美容医院隶属于某某医疗集团，均美医疗集团创建于1
-    999年，集团总部设在上海。是目前国内早从事医疗投资的集团企业，也
-    是国内规模大的医学美容连锁机构。其经营范围涉足医疗、保健、科研
-    等多个医疗卫生领域，业务形态以专科整形美容医院为主。多年来，云
-    南美诚均美美容医院潜心于整形美容行业，已先后在昆明、重庆、苏州、
-    广州等30城设立整形连锁机构。云南美诚均美美容医院隶属于某某医疗集团，均美医疗集团创建于1
-    999年，集团总部设在上海。是目前国内早从事医疗投资的集团企业，也
-    是国内规模大的医学美容连锁机构。其经营范围涉足医疗、保健、科研
-    等多个医疗卫生领域，业务形态以专科整形美容医院为主。多年来，云
-    南美诚均美美容医院潜心于整形美容行业，已先后在昆明、重庆、苏州、
-    广州等30城设立整形连锁机构。
-    </scroll-view>
+<view class="words section wrap">
+    <view class="content">
+<text class='block'>1111云南美诚均美美容医院隶属于某某医疗集团，均美医疗集团创建于1999年，集团总部设在上海。是目前国内早从事医疗投资的集团企业，也是国内规模大的医学美容连锁机构。其经营范围涉足医疗、保健、科研 等多个医疗卫生领域，业务形态以专科整形美容医院为主。多年来，云南美诚均美美容医院潜心于整形美容行业，已先后在昆明、重庆、苏州、广州等30城设立整形连锁机构。云南美诚均美美容医院隶属于某某医疗集团，均美医疗集团创建于1999年，集团总部设在上海。是目前国内早从事医疗投资的集团企业，也是国内规模大的医学美容连锁机构。其经营范围涉足医疗、保健、科研</text>
+<text class='block'>22222云南美诚均美美容医院隶属于某某医疗集团，均美医疗集团创建于1 999年，集团总部设在上海。是目前国内早从事医疗投资的集团企业，也 是国内规模大的医学美容连锁机构。其经营范围涉足医疗、保健、科研等多个医疗卫生领域，业务形态以专科整形美容医院为主。多年来，云 南美诚均美美容医院潜心于整形美容行业，已先后在昆明、重庆、苏州、广州等30城设立整形连锁机构。云南美诚均美美容医院隶属于某某医疗集团，均美医疗集团创建于1999年，集团总部设在上海。是目前国内早从事医疗投资的集团企业，也是国内规模大的医学美容连锁机构。其经营范围涉足医疗、保健、科研</text>
+    </view>
 </view><!--words结束-->
 
 </view>

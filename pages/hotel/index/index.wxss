@@ -14,6 +14,8 @@
 .header{
   width: 100%;
   display: block;
+  position: relative;
+  z-index: 5;
 }
 .header image{
   width: 100%;
@@ -27,7 +29,11 @@
   line-height: 70rpx;
   font-size: 34rpx;
   color: gray;
-  box-shadow: 0rpx 4rpx 3rpx #f54556; }
+  box-shadow: 0rpx 4rpx 3rpx #f54556;
+  position: relative;
+  z-index: 100;
+  opacity: 1;
+  }
   .nav text{color:#dddddd;}
 .nav .left{
   width: 33%;
@@ -42,13 +48,13 @@
   margin-bottom: 2%;
   }
 
-.nav >view:nth-child(1).change1{color: black;}
+ .nav >view:nth-child(1).change1{color: black;}
 .nav >view:nth-child(2).change2{color: black;}
-.nav >view:nth-child(3).change3{color: black;}
+.nav >view:nth-child(3).change3{color: black;} 
 .nav image{transition: all 0.3s ease-in-out;}
-/* .nav >view:nth-child(1) image.change1{transform: rotate(1800deg);}
+ /* .nav >view:nth-child(1) image.change1{transform: rotate(1800deg);}
 .nav >view:nth-child(2) image.change2{transform: rotate(180deg);}
-.nav >view:nth-child(3) image.change3{transform: rotate(180deg);} */
+.nav >view:nth-child(3) image.change3{transform: rotate(180deg);}  */
 
 .nav .container >view { position: absolute; right: 0; top: 0; transition: all 0.5s ease-in-out; opacity: 0.5; }
 .nav .container >view:nth-child(1).active1 { right: -100%; opacity: 1; }
@@ -82,10 +88,15 @@
 .city{
   width: 100%;
   height: 600rpx;
-  opacity: 1;}
+  opacity: 1;
+  position: relative;
+  z-index: 5;}
    
-.brand{width:100%;background: #fff;color:#000;}
-
+.brand{width:100%;background:#fff;color:#000;}
+.model{background: #000;position:fixed;top:0;left:0;z-index:1;opacity: 0.3;}
+/*内容块*/
+/*内容块*/
+/*内容块*/
 /*内容块*/
 .city .content{
   width: 100%;

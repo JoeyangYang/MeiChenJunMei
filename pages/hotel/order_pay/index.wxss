@@ -83,6 +83,6 @@ page{background-color: #F8F8F8;}
   background-color: #f54556;
 }
 .active{
-  background: linear-gradient(#3399ff,#3ab3ff);
+  
   transition: all 0.5s ease-in-out;
 }

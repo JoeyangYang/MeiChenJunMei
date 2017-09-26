@@ -1,1 +1,31 @@
 /* pages/wordsOne/index.wxss */
+ .wrap{height:400px;overflow: hidden;position: absolute;top:30;left: 100;width: 100%}
+      text{margin:0;height: 400px;width: 100%;display: block;}
+      .content text{
+        position: absolute;
+      }
+      @-webkit-keyframes anim1{
+        0% {top: 0px;opacity: 1}
+        /* 50% {top: -30px;opacity: 1}
+        75% {top: -30px ;opacity: 0} */
+        100%{top:100%;opacity: 0}
+      }
+       @-webkit-keyframes anim2{
+     
+        0% {top:-100%;opacity: 0}
+        /* 25% {top: -30px;opacity: 0}
+        50% {top: -30px;opacity: 1} */
+        100%{top: 0;opacity: 1}
+      } 
+
+       .content text:nth-child(1){background-color: red;}
+      .content text:nth-child(2){background-color: yellow;} 
+      .content text:nth-child(1){
+        
+        animation: anim1 3s linear infinite;
+      }
+      
+        .content text:nth-child(2){
+    
+        animation: anim2 3s linear infinite;
+      }  
