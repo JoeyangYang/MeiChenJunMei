@@ -521,7 +521,7 @@ Page({
       data: singleHotel,
       success:function(res){
         wx.navigateTo({
-          url: '/pages/hotel/detail/index',
+          url: '/pages/medical/detail/index',
         })
       }
     });

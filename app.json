@@ -1,18 +1,16 @@
 {
   "pages":[
    "pages/index/index",
-   "pages/hotel/index/index",
+   "pages/medical/index/index",
    "pages/wordsOne/index",
     "pages/me/index/index",
     "pages/case/index",
     "pages/order/index/index",
    "pages/aboutUs/index/index",
     
-    "pages/hotel/detail/index",
-    
-    "pages/hotel/order/index",
-    
-    "pages/hotel/order_pay/index",
+    "pages/medical/detail/index",
+    "pages/medical/order/index",
+    "pages/medical/order_pay/index",
     
     
    
@@ -49,24 +47,24 @@
       {
         "pagePath": "pages/index/index",
         "iconPath": "img/home_icon.png",
-        "selectedIconPath": "img/预定2.png",
+        "selectedIconPath": "img/首页选中.png",
         "text": "首页"
       },
       {
         "pagePath": "pages/case/index",
         "iconPath": "img/case_icon.png",
-        "selectedIconPath": "img/我的2.png",
+        "selectedIconPath": "img/成功案例选中.png",
         "text": "成功案例"
       },
       {
         "pagePath": "pages/me/index/index",
-        "iconPath": "img/member_icon.png",
-        "selectedIconPath": "img/我的2.png",
+        "iconPath": "img/我的2.png",
+        "selectedIconPath": "img/member_icon.png",
         "text": "会员中心"
       },{
         "pagePath": "pages/aboutUs/index/index",
         "iconPath": "img/a.png",
-        "selectedIconPath": "img/我的2.png",
+        "selectedIconPath": "img/关于我们选中.png",
         "text": "关于我们"
       }
       

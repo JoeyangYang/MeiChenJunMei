@@ -5,37 +5,37 @@
        <text class="{{on}}" data-active="2" bindtap="orderNavClick">已完成</text>
        <text class="{{on}}" data-active="3" bindtap="orderNavClick">退款中</text>
        <text class="{{on}}" data-active="4" bindtap="orderNavClick">已退款</text>
-        <view class="{{animation}}"></view> 
+        <view class="{{animation}}"></view>
    </view>
-   <block wx:key="" wx:for="{{hotelList}}" wx:for-item="item">
-    
+   <block wx:key="" wx:for="{{listContent}}" wx:for-item="item">
+   <block wx:key="" wx:for="{{item.content}}" wx:for-item="item1">
     <view class="detail">
-      <navigator url="../detail/index?id={{item.id}}">
+      <navigator url="../detail/index?id={{item1.id}}">
+        
        <view class='box'>
-          <text class="lt">{{item.hotel_name}}</text>
+          <text class="lt">{{item1.name}}</text>
           <text class="arrow">></text>
-          <text class="rt">{{item.status}}</text>
+          <text class="rt">{{item1.status}}</text>
         </view>
       <view class="content">
         <view class="lc">
-            <!-- <text>1间欧式大床房jkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</text> -->
-            <text>{{item.check_in}} - {{item.check_out}} 共1晚</text>
-            <text>{{item.address}}</text>
-            <text>{{item.detail}}</text>
+            <text>{{item1.address}}</text>
+            <text>{{item1.detail}}</text>
         </view>
         <view class="rc">￥{{item.price}}</view>
       </view>
+     
        </navigator>
       <view class="btns">
       <navigator url="../../me/refund/index?id={{item.id}}&price={{item.price}}" class="refund {{item.refund}}"> 
             申请退款
       </navigator>
-      <navigator url="/pages/hotel/detail/index" class="book">
-            立即预定
+      <navigator url="/pages/medical/detail/index" class="book">
+            立即预约
       </navigator>
         
       </view>
       </view><!--detail结束-->
-     
+      </block>
     </block>
 </view><!--order_index结束-->

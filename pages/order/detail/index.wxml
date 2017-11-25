@@ -70,5 +70,5 @@
 </block>
 <view class="foot">
         <navigator url="/pages/me/refund/index">{{refund}}</navigator>
-        <navigator url="/pages/hotel/detail/index">再次预定</navigator>
+        <navigator url="/pages/medical/detail/index">再次预定</navigator>
     </view>

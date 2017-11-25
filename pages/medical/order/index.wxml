@@ -58,7 +58,7 @@
     <view class='main4'>
       <!--温馨提示-->
       <view class='prompt center'>
-        <text>温馨提示：请于入住日下午14：00后办理入住，如提前到店，视酒店空房情况安排。</text>
+        <text>温馨提示：请于手术日下午14：00后办理入院，如提前到院，视医院手术情况安排。</text>
       </view>
     </view>
     <!--主体第五块-->
@@ -106,7 +106,7 @@
         <text>￥{{result}}</text>
       </view>
       <view class='submit'>
-        <navigator url='/pages/hotel/order_pay/index?result={{result}}'>
+        <navigator url='/pages/medical/order_pay/index?result={{result}}'>
           <button class='bg-blue' bindtap='submit'>提交订单</button>
         </navigator>
       </view>

@@ -24,7 +24,7 @@ page { font-family: 'Microsoft YaHei'; }
   box-shadow: 0rpx 6rpx 3rpx #7d7d7d;font-size: 28rpx; letter-spacing: 4rpx;background: #f54556}
 /*主体*/
 .main{width: 99.5%;height: 400rpx;margin-top: 23%;}
-.main1{width: 80%; height: 80rpx;margin: 0px auto;line-height: 80rpx;text-align: center;margin-top:-20rpx;margin-bottom:20rpx;}
+.main1{width: 80%; height: 80rpx;margin: 0px auto;line-height: 80rpx;text-align: center;margin-top:0rpx;margin-bottom:20rpx;}
 .main1 .em1{display: block;width: 30%; height: 1px;background-color: gainsboro;margin-top: 7%;float: left;}
 .main1 .em2{display: block;width: 30%; height: 1px;background-color: gainsboro;margin-top: 7%;float: right;}
 .main1 .brand{ font-size: 28rpx;}
@@ -65,5 +65,6 @@ page { font-family: 'Microsoft YaHei'; }
     
         animation: anim2 8s linear infinite;
       }  
+    
 
 

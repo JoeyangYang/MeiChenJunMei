@@ -25,7 +25,7 @@
         <view class='main'>
     <!--主体第一块-->
     <block wx:key="" wx:for="{{listAll}}" wx:for-item="item">
-      <navigator data-singlehotel="{{item}}" url='/pages/hotel/detail/index?date={{date}}&nightNum={{nightNum}}&dateEnd={{dateEnd}}' bindtap='addChange'>
+      <navigator data-singlehotel="{{item}}" url='/pages/medical/detail/index?date={{date}}&nightNum={{nightNum}}&dateEnd={{dateEnd}}' bindtap='addChange'>
         <view class="main1 center">
         <!--图片-->
         <view class="left">

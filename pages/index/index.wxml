@@ -13,7 +13,7 @@
       
       <!--下-->
       <view class="bottom Center">
-        <navigator url='/pages/hotel/index/index?date={{date}}&nightNum={{nightNum}}&dateEnd={{dateEnd}}'>
+        <navigator url='/pages/medical/index/index?date={{date}}&nightNum={{nightNum}}&dateEnd={{dateEnd}}'>
           <button>查询</button>
         </navigator>
       </view>
@@ -27,7 +27,7 @@
       <em class="em2"></em>
     </view>
     <swiper indicator-dots="{{indicatorDots}}"
-    autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{indicatorActiveColor}}" style="height:164px;">
+    autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{indicatorActiveColor}}" style="height:160px;">
     <block wx:key="" wx:for="{{datas}}" wx:for-index="index" wx:for-item="val1">
       <swiper-item bindtap="top">
       <view class='main2_box'>
