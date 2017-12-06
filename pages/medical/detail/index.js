@@ -99,9 +99,11 @@ Page({
     wx.getStorage({
       key: 'singleHotel',
       success: function(res) {
+        console.log("缓存");
+        console.log(res);
         var hotel = res.data;
         that.setData({
-          hotel: hotel
+          hotel: hotel,
         });
       }
     });

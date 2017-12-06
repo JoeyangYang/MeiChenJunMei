@@ -1,75 +1,46 @@
 <!--pages/hotel/index/index.wxml-->
-<view class='all'>
+<view class='all {{box}}'>
   <view class='header relative'>
     <image src='{{imgSrc}}{{index}}' mode='widthFix'></image>
     
   </view>
   <view class='nav relative'>
-    <view class='left {{color}}' data-display="{{display}}" data-active="1" bindtap="tabChange">
-      <text>项目</text>
-      <image src="../../../img/10.png" class='{{color}}'></image>
-    </view>
-    <view class='middle {{color}}' data-display="{{display}}" data-active="2" bindtap="tabChange">
+    <view class='middle {{color}}' data-display="{{display}}" data-active="1" bindtap="tabChange">
       <text>价格</text>
       <image src="../../../img/10.png" class='{{color}}'></image>
     </view>
-    <view class='right {{color}}' data-display="{{display}}" data-active="3" bindtap="tabChange">
+    <view class='right {{color}}' data-display="{{display}}" data-active="2" bindtap="tabCategory">
       <text>类别</text>
       <image src="../../../img/10.png" class='{{color}}'></image>
     </view>
     <!--定位全城搜索-->
     <view class='container'>
-    <!--点击项目出现的隐藏块-->
-      <view class='brand {{searchStyle}}'>
-     
-        <view class='main'>
-    <!--主体第一块-->
-    <block wx:key="" wx:for="{{listAll}}" wx:for-item="item">
-      <navigator data-singlehotel="{{item}}" url='/pages/medical/detail/index?date={{date}}&nightNum={{nightNum}}&dateEnd={{dateEnd}}' bindtap='addChange'>
-        <view class="main1 center">
-        <!--图片-->
-        <view class="left">
-          <image src="../../../img/11.png"></image>
-        </view>
-        <!--酒店详情-->
-        <view class="middle">
-          <view  class="hotel"><text>{{item.name}}</text></view>
-          <view  class="distance"><text>{{item.effect}}</text></view>
-        </view>
-        <!--价格-->
-        <view class="right"><text class='sign'>￥</text><text class="price">{{item.data.price}}</text><text class='rise'>起</text></view>
-        </view>
-      </navigator>
-    </block>
-    <view class="allCase">
-      <text>. . .</text>已显示全部<text>. . .</text>
-    </view><!--allCase结束-->
-  </view>
-  </view>
       <!--点击价格出现的隐藏块-->
       <view class='price {{searchStyle}} city'>
          <view class="price_box">
                <view class="sort">价格排序</view>
-                <view>
-                   <text class="on">由低到高</text>
-                   <text>由高到低</text>
+                <view class='sortPrice'>
+                   <text class="{{on}}" bindtap='sortPrice' data-num="1">由低到高</text>
+                   <text class="{{on}}" bindtap='sortPrice' data-num="2">由高到低</text>
                 </view>
          </view><!--price_box结束-->
         <view class="bottom" style='border-top:1px solid #c9c9c9'>
           <view class="empty"><text style='color:#f54556'>清空</text></view>
-          <view class="yes" bindtap="tabChange" data-ok="true" data-active="{{searchHandle}}"><text>确定</text></view>
+          <view class="yes" bindtap="priceConfire" data-ok="true" data-active="{{searchHandle}}"><text>确定</text></view>
         </view>
         
       </view>
       <!--点击类别出出现的隐藏块-->
       <view class="city {{searchStyle}}">
-        <view class="content">
-          <view class="condition">
-            <block wx:key="" wx:for="{{listAreaBelong}}" wx:for-item="item" wx:for-index="index">
-              <view wx:if="{{item.active == 1}}" class="one active" data-id="{{item.id}}" bindtap='clickChange'>{{item.name}}</view>
+        <view class="content" >
+        <!-- 左边 -->
+          <view class="condition" >
+            <block wx:key="" wx:for="{{typeLeft}}" wx:for-item="item" wx:for-index="index">
+              <view wx:if="{{item.active == 1}}" class="one active" data-id="{{item.id}}" bindtap='listAreaBelongChange'>{{item.name}}</view>
               <view wx:else class="one" data-id="{{item.id}}" bindtap='listAreaBelongChange'>{{item.name}}</view>
             </block>
-          </view>
+          </view><!---condition结束-->
+          <!-- 右边 -->
           <view class="detailed">
             <block wx:key="" wx:for="{{listArea}}" wx:for-item="item">
               <view wx:if="{{item.active == 1}}" class="area active" data-id="{{item.id}}" bindtap="listAreaChange">{{item.name}}</view>
@@ -79,29 +50,29 @@
         </view>
         <view class="bottom">
           <view class="empty"><text>清空</text></view>
-          <view class="yes" bindtap="tabChange" data-ok="true" data-active="{{searchHandle}}"><text>确定</text></view>
+          <view class="yes" bindtap="confire" data-ok="true" data-active="{{searchHandle}}"><text>确定</text></view>
         </view>
       </view>
     </view>  
   </view>
   <!--主体-->
-  <view class='main' style='position: relative;' >
-    <view style='position: absolute; top: 0; left: 0; background: rgba(0,0,0,0.6); z-index:{{zIndex}}; width: 100%; height: 100%; transition: all 0.3s ease-in-out;'></view>
+  <view class='main' style='position:relative;' >
+    <view style='position: absolute; top: 0; left: 0; background: rgba(0,0,0,0.6); z-index:{{zIndex}}; width: 100%; height: {{windowHeight}}px; transition: all 0.3s ease-in-out;'></view>
     <!--主体第一块-->
-    <block wx:key="" wx:for="{{listAll}}" wx:for-item="item">
+    <block wx:key="" wx:for="{{allList}}" wx:for-item="item">
       <view data-singlehotel="{{item}}" bindtap='addChange'>
         <view class="main1 center">
         <!--图片-->
         <view class="left">
-          <image src="../../../img/11.png"></image>
+          <image src="{{webSite}}{{item.img}}"></image>
         </view>
         <!--酒店详情-->
         <view class="middle">
           <view  class="hotel"><text>{{item.name}}</text></view>
-          <view  class="distance"><text>{{item.effect}}</text></view>
+          <view  class="distance"><text>{{item.describe}}</text></view>
         </view>
         <!--价格-->
-        <view class="right"><text class='sign'>￥</text><text class="price">{{item.data.price}}</text><text class='rise'>起</text></view>
+        <view class="right"><text class='sign'>￥</text><text class="price">{{item.price}}</text><text class='rise'>起</text></view>
         </view>
       </view>
     </block>

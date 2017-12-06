@@ -1,5 +1,10 @@
 // pages/hotel/index/index.js
+/**
+ * allList:所有项目
+ * category:点击类别，按类别查询
+ */
 var data=new Date();
+var app = getApp();
 Page({
 
   /**
@@ -10,16 +15,157 @@ Page({
     nightNum: '1',
     display: false,
     searchHandle: '0',
-    imgSrc: '../../../img/top_bg1.jpg',
+    imgSrc: '../../../img/top_bg.jpg',
     hidden:false,
    zIndex:"-1",
+   on:'on1',
+   toggle:'',
+   box:'',
+   webSite: app.globalData.webSite,
+   on:''
   },
+  sortPrice:function(e){
+    var that=this;
+    var sort;
+    var num=e.currentTarget.dataset.num;
+    console.log(num);
+      that.setData({
+        on: 'on'+num,
+      })
+    if(num==1){//升序
+       sort='asc';
+    }
+    if(num==2){
+      sort ='desc';
+    }
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: 'get',
+      url: app.globalData.webSite + '/weixin.php/wechat/getgoods',
+      data:{
+         order:sort
+      },
+      success: function (res) {
+        if (res.data.code == 0) {
+          that.setData({
+            priceSort: res.data.data
+          })
+        }
+      },
+    })
+  },
+  priceConfire:function(){
+    var that=this;
+    that.setData({
+      color: '',
+      display: false,
+      searchStyle: '',
+      searchHandle: '0',
+      zIndex: "-1",
+      box: ''
+    });
+    var priceSort=that.data.priceSort;
+     that.setData({
+       allList: priceSort
+     })
+  },
+  //按类别查询
+  tabCategory:function(e){
+    var that = this;
+    var searchHandle = that.data.searchHandle;
+    var index = e.currentTarget.dataset.active;
+    var allList = [];
+    that.setData({
+      hidden: true
+    });
+    if (searchHandle == index) {
+      that.setData({
+        color: '',
+        display: false,
+        searchStyle: '',
+        searchHandle: '0',
+        zIndex: "-1",
+        box: ''
+      });
+    } else {
+      var display = e.currentTarget.dataset.display;
+      var color = 'change' + index;
+      var searchStyle = 'active' + index;
+      //当前点击内容出现
+      that.setData({
+        color: color,
+        display: true,
+        searchStyle: searchStyle,
+        searchHandle: index,
+        zIndex: "1",
+        imgSrc: "../../../img/top_bg" + index + ".jpg",
+        box: 'box'
+
+      });
+    }
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: 'get',
+      url: app.globalData.webSite + '/weixin.php/wechat/getcategory',
+      success:function(res){
+       if(res.data.code==0){
+         res.data.data[0].active = '1';
+         if (res.data.data[0].subcat==undefined){
+              res.data.data[0]=[]
+         }
+         that.setData({
+           typeLeft:res.data.data,
+           listArea:res.data.data[0].subcat
+
+         })
+       }
+      },
+    })
+  },
+  //listAreaBelong点击,类别左边
+  listAreaBelongChange: function (e) {
+    var that = this;
+    var id = e.currentTarget.dataset.id;
+    var listAreaBelong = that.data.typeLeft;
+    var listArea;
+    //清空
+    listAreaBelong.forEach(function (val, key) {
+      listAreaBelong[key].active = '0';
+    });
+    //改变active
+    listAreaBelong.forEach(function (val, key) {
+      if (val.id == id) {
+        listAreaBelong[key].active = '1';
+        
+        //根据id生成新listArea
+        if (val.subcat != undefined){
+          listArea = val.subcat;
+        }else{
+          listArea=[]
+        }  
+      }
+     
+    });
+   
+    //数据绑定
+    that.setData({
+      typeLeft: listAreaBelong,
+      listArea: listArea
+    });
+  },
+
+  
+    //点击价格，类别显示不同的内容
+  //点击价格，类别显示不同的内容
   tabChange:function(e){
     console.log(e);
     var that=this;
     var searchHandle = that.data.searchHandle;
     var index = e.currentTarget.dataset.active;
-    var listAll = [];
     that.setData({
       hidden: true
     });
@@ -30,6 +176,7 @@ Page({
         searchStyle: '',
         searchHandle: '0',
         zIndex:"-1",
+        box:''
       });
     }else {
       var display = e.currentTarget.dataset.display;
@@ -42,20 +189,10 @@ Page({
         searchStyle: searchStyle,
         searchHandle: index,
         zIndex:"1",
-        imgSrc:"../../../img/top_bg"+index+".jpg"
+        imgSrc:"../../../img/top_bg"+index+".jpg",
+        box:'box'
 
       });
-    }
-
-    if (e.currentTarget.dataset.ok) {
-      wx.getStorage({
-        key: 'listHotel',
-        success: function (res) {
-          that.setData({
-            listAll: res.data,
-          })
-        },
-      })
     }
   },
   /**
@@ -75,377 +212,40 @@ Page({
         });
       },
     })
-    var hotelList = [
-      {
-        id: '1',
-        name: "微整形中心",
-        data: [
-          {
-            id: '1',
-            name: "深V假体丰胸",
-            data: []
-          },
-          {
-            id: '2',
-            name: "韩式隆鼻",
-            data: []
-          },
-          {
-            id: '3',
-            name: "双眼皮",
-            data: []
-          },
-          {
-            id: '4',
-            name: "祛眼袋",
-            data: []
-          },
-          {
-            id: '5',
-            name: "全鼻整形",
-            data: []
-          },
-          {
-            id: '6',
-            name: "全鼻整形",
-            data: []
-          },
-          {
-            id: '7',
-            name: "全鼻整形",
-            data: []
-          }
-        ]
-      },
-      {
-      id: '2',
-      name: '整形中心',
-      data: [
-        {
-          id: '1',
-          name: '韩式隆鼻',
-          data: [
-            {
-              id: "1",
-              name: '面部紧致提升',
-              effect:"国际前沿微创技术",
-              data: {
-                id:1,
-                address: '昆明市五华区XXXXXXXXX号',
-                phone: '0871-46275645',
-                price: '199',
-                homeStyle: [
-                  {
-                    price: '258',
-                    name: '主体大床房',
-                    spec: ['20平方','大床','有床'],
-                    member: [
-                      {
-                        name: '会员价',
-                        spec: ['含早'],
-                        price: '258'
-                      },
-                      {
-                        name: '会员价',
-                        spec: ['含早', '免费停车'],
-                        price: '260'
-                      }
-                    ],
-                  },
-                  {
-                    price: '238',
-                    name: '主题中等房',
-                    spec: ['15平方', '中床', '有床'],
-                    member: [
-                      {
-                        name: '会员价',
-                        spec: ['含早'],
-                        price: '258'
-                      },
-                      {
-                        name: '会员价',
-                        spec: ['含早', '免费停车'],
-                        price: '260'
-                      }
-                    ]
-                  }
-                ]
-              }
-            },
-            {
-              id: "2",
-              name: '急速纳米美艳',
-              effect:'避开大血管 更安全 自然',
-              data: {
-                id: 2,
-                address: '昆明市五华区XXXXXXXXX2号',
-                phone: '0871-46275645',
-                price: '199',
-                homeStyle: [
-                  {
-                    name: '主体大床房',
-                    price: '288',
-                    spec: ['30平方', '大床', '有床'],
-                    member: [
-                      {
-                        name: '会员价',
-                        spec: ['含早'],
-                        price: '288'
-                      },
-                      {
-                        name: '会员价',
-                        spec: ['含早', '免费停车'],
-                        price: '290'
-                      }
-                    ]
-                  }
-                ]
-              }
-            },
-            {
-              id: "3",
-              name: '玻尿酸',
-              effect:'改变时间的烙印',
-              data: {
-                id: 3,
-                address: '昆明市五华区XXXXXXXXX2号',
-                phone: '0871-46275645',
-                price: '199',
-                homeStyle: [
-                  {
-                    name: '主体大床房',
-                    price: '329',
-                    spec: ['50平方', '大床', '有床'],
-                    member: [
-                      {
-                        name: '会员价',
-                        spec: ['含早'],
-                        price: '329'
-                      },
-                      {
-                        name: '会员价',
-                        spec: ['含早', '免费停车'],
-                        price: '330'
-                      }
-                    ]
-                  }
-                ]
-              }
-            }
-          ]
-        },
-
-        {
-          id: '2',
-          name: '韩式隆鼻',
-          data: [
-            {
-              id:"1",
-              name: '敏感肌综合疗法',
-              effect:'治疗皮肤泛红瘙痒等',
-              data: {
-                id: 4,
-                address: '昆明市盘龙区XXXXXXXXX号',
-                phone: '0871-46275645',
-                price: '199',
-                homeStyle: [
-                  {
-                    name: '主体大床房',
-                    price: '258',
-                    spec: ['20平方', '大床', '有床'],
-                    member: [
-                      {
-                        name: '会员价',
-                        spec: ['含早'],
-                        price: '258'
-                      },
-                      {
-                        name: '会员价',
-                        spec: ['含早', '免费停车'],
-                        price: '260'
-                      }
-                    ]
-                  }
-                ]
-              }
-            },
-            {
-              id: "2",
-              name: '原生俏鼻',
-              effect:'精雕九大区域 重建结构',
-              data: {
-                id: 5,
-                address: '昆明市盘龙区XXXXXXXXX2号',
-                phone: '0871-46275645',
-                price: '199',
-                homeStyle: [
-                  {
-                    name: '主体大床房',
-                    price: '288',
-                    spec: ['30平方', '大床', '有床'],
-                    member: [
-                      {
-                        name: '会员价',
-                        spec: ['含早'],
-                        price: '288'
-                      },
-                      {
-                        name: '会员价',
-                        spec: ['含早', '免费停车'],
-                        price: '290'
-                      }
-                    ]
-                  }
-                ]
-              }
-            },
-            {
-              id: "3",
-              name: '嘉优隆酒店3(盘龙区)',
-              data: {
-                id: 6,
-                address: '昆明市盘龙区XXXXXXXXX2号',
-                phone: '0871-46275645',
-                price: '199',
-                homeStyle: [
-                  {
-                    name: '主体大床房',
-                    price: '329',
-                    spec: ['50平方', '大床', '有床'],
-                    member: [
-                      {
-                        name: '会员价',
-                        spec: ['含早'],
-                        price: '329'
-                      },
-                      {
-                        name: '会员价',
-                        spec: ['含早', '免费停车'],
-                        price: '330'
-                      }
-                    ]
-                  }
-                ]
-              }
-            }
-          ]
-        },
-
-        {
-          id: '3',
-          name: '韩式隆鼻',
-          data: [
-            {
-              id: "1",
-              name: '嘉优隆酒店1(西山区)',
-              data: {
-                id: 7,
-                address: '昆明市西山区XXXXXXXXX号',
-                phone: '0871-46275645',                
-                price: '199',
-                homeStyle: [
-                  {
-                    name: '主体大床房',
-                    price: '258',
-                    spec: ['20平方', '大床', '有床'],
-                    member: [
-                      {
-                        name: '会员价',
-                        spec: ['含早'],
-                        price: '258'
-                      },
-                      {
-                        name: '会员价',
-                        spec: ['含早', '免费停车'],
-                        price: '260'
-                      }
-                    ]
-                  }
-                ]
-              }
-            },
-            {
-              id: "2",
-              name: '嘉优隆酒店2(西山区)',
-              data: {
-                id: 8,
-                address: '昆明市西山区XXXXXXXXX2号',
-                phone: '0871-46275645',
-                price: '199',
-                homeStyle: [
-                  {
-                    name: '主体大床房',
-                    price: '288',
-                    spec: ['30平方', '大床', '有床'],
-                    member: [
-                      {
-                        name: '会员价',
-                        spec: ['含早'],
-                        price: '288'
-                      },
-                      {
-                        name: '会员价',
-                        spec: ['含早', '免费停车'],
-                        price: '290'
-                      }
-                    ]
-                  }
-                ]
-              }
-            },
-            {
-              id: "3",
-              name: '嘉优隆酒店3(西山区)',
-              data: {
-                id: 9,
-                address: '昆明市西山区XXXXXXXXX2号',
-                phone: '0871-46275645',
-                price: '199',
-                homeStyle: [
-                  {
-                    name: '主体大床房',
-                    price: '329',
-                    spec: ['50平方', '大床', '有床'],
-                    member: [
-                      {
-                        name: '会员价',
-                        spec: ['含早'],
-                        price: '329'
-                      },
-                      {
-                        name: '会员价',
-                        spec: ['含早', '免费停车'],
-                        price: '330'
-                      }
-                    ]
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        
-      ]
-    }
-    ];
+   
+   var hotelList=[];
 
     var listAll = [];
     var listAreaBelong = [];
     var listArea = [];
-
+    //请求接口
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: 'get',
+      url: app.globalData.webSite + '/weixin.php/wechat/getgoods',
+      success:function(res){
+         if(res.data.code==0){
+           hotelList = res.data.data;
+           that.setData({
+             allList:res.data.data
+           })
+         }
+      },
+    })
     hotelList.forEach(function(val1,key1) {
+     
       //第一次加载，改变第一项active
       if(key1 == '0'){
           hotelList[key1].active = '1';
       }
       listAreaBelong.push(val1);
-      val1.data.forEach(function(val2,key2) {
+      val1.subcat.forEach(function(val2,key2) {
           if(key1 == '0') {
             listArea.push(val2);
           }
-          val2.data.forEach(function(val3,key3) {
-            listAll.push(val3);
-          });
+          
       });
     });
 
@@ -457,38 +257,13 @@ Page({
     });
   },
 
-  //listAreaBelong点击
-  listAreaBelongChange:function (e){
-     var that = this;
-     var id = e.currentTarget.dataset.id;
-     var listAreaBelong = that.data.listAreaBelong;
-     var listArea;
-     //清空
-     listAreaBelong.forEach(function (val, key) {
-       listAreaBelong[key].active = '0';
-     });
-     //改变active
-     listAreaBelong.forEach(function(val,key) {
-        if(val.id == id) {
-          listAreaBelong[key].active = '1';
-          //根据id生成新listArea
-          listArea = val.data;
-        }
-     });
-
-     //数据绑定
-     that.setData({
-       listAreaBelong: listAreaBelong,
-       listArea: listArea
-     });
-   },
-
-  //listArea点击
+ 
+  //listArea点击，类别右边
   listAreaChange: function (e) {
     var that = this;
     var id = e.currentTarget.dataset.id;
     var listArea = that.data.listArea;
-    var listHotel;
+    var allList;
     //清空
     listArea.forEach(function (val, key) {
       listArea[key].active = '0';
@@ -497,25 +272,60 @@ Page({
     listArea.forEach(function (val, key) {
       if (val.id == id) {
         listArea[key].active = '1';
-        listHotel = val.data;
+        allList = val.subcat;
+        if (listArea[key].length!=0){
+          that.setData({
+            categroy_two_single: listArea[key]
+          }) 
+        }else{
+          that.setData({
+            categroy_two_single: []
+          })
+        }
+        
       }
     });
     wx.setStorage({
       key: 'listHotel',
-      data: listHotel
+      data: allList
     })
     that.setData({
       listArea: listArea,
     });
   },
-
+  confire:function(){
+    var that = this;
+    that.setData({
+      color: '',
+      display: false,
+      searchStyle: '',
+      searchHandle: '0',
+      zIndex: "-1",
+      box: ''
+    });
+    var categroy_two_single = that.data.categroy_two_single;
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: 'get',
+      data:{
+        id: categroy_two_single.id
+      
+      },
+      url: app.globalData.webSite + '/weixin.php/wechat/searchCate/id/2',
+      success: function (res) {
+        that.setData({
+          allList:res.data.data
+        })
+      },
+    })
+  },
+  //类别确定按钮，点击跳转到预约页面
   addChange:function(e){
-    console.log("e");
     console.log(e);
     var that=this;
     var singleHotel = e.currentTarget.dataset.singlehotel;
-    console.log("singlHotel");
-    console.log(singleHotel);
     wx.setStorage({
       key: 'singleHotel',
       data: singleHotel,

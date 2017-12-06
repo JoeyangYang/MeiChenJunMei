@@ -1,10 +1,12 @@
 /* pages/hotel/index/index.wxss */
 /*整个页面*/
+.box{height:100%;position: fixed;overflow: hidden;top:0;left:0;bottom:0;right:0;}
 .all{
   width: 100%;
   height: auto;
   font-family: 微软雅黑;
   background-color: white;
+  overflow: hidden;
 }
 .relative{
   position: relative;}
@@ -48,10 +50,13 @@
   margin-bottom: 2%;
   }
 
- .nav >view:nth-child(1).change1{color: black;}
-.nav >view:nth-child(2).change2{color: black;}
-.nav >view:nth-child(3).change3{color: black;} 
-.nav image{transition: all 0.3s ease-in-out;}
+ .nav >view:nth-child(1).change1 text{color: #f54556;}
+ .nav >view:nth-child(1).change1 image{transform: rotate(180deg); transform:all 0.5s ease-in-out;}
+ .nav >view:nth-child(2).change2 text{color: #f54556;}
+ .nav >view:nth-child(2).change2 image{transform: rotate(180deg);transform:all 0.5s ease-in-out;}
+ .nav >view:nth-child(3).change3 text{color: #f54556;} 
+  .nav >view:nth-child(3).change3 image{transform: rotate(180deg);transform:all 0.5s ease-in-out;}
+ .nav image{transition: all 0.3s ease-in-out;}
  /* .nav >view:nth-child(1) image.change1{transform: rotate(1800deg);}
 .nav >view:nth-child(2) image.change2{transform: rotate(180deg);}
 .nav >view:nth-child(3) image.change3{transform: rotate(180deg);}  */
@@ -64,13 +69,13 @@
 
 
 .nav .middle{
-  width: 33%;
+  width: 50%;
   display: inline-block;
   text-align: center;
   font-size: 27rpx;
   }
 .nav .right{
-  width: 34%;
+  width: 50%;
   display: inline-block;
   text-align: center;
   font-size: 27rpx;
@@ -239,6 +244,8 @@
   .price .bottom .empty{color:#f54556;}
   .price_box text{color:#000;display: inline-flex;width:200rpx;height:60rpx;border:1px solid #cccccc;justify-content: center;align-items: center;border-radius: 12rpx;font-size:28rpx;}
   .price_box text:last-child{margin-left:45px;}
-  .price_box text.on{background:#f54556;border: 1px solid #f54556;color:#fff;}
+  /* .price_box text.on{background:#f54556;border: 1px solid #f54556;color:#fff;} */
+   .price_box .sortPrice>text:nth-child(1).on1 { background:#f54556;border: 1px solid #f54556;color:#fff; }
+   .price_box .sortPrice>text:nth-child(2).on2 { background:#f54556;border: 1px solid #f54556;color:#fff; }
   .price_box .sort{color:#d2d2d2;font-size:28rpx;}
   

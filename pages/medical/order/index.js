@@ -1,4 +1,5 @@
 // pages/hotel/order/index.js
+var app = getApp();
 Page({
 
   /**
@@ -6,24 +7,8 @@ Page({
    */
   data: {
     active: '',
-    integral:'1660'
-  },
-
-  switchChange: function (e) {
-    var that = this;
-    var price = that.data.price;
-    var result = price - that.data.deductible;
-    if (e.detail.value){
-      that.setData({
-        active: 'active',
-        result: result
-      });
-    }else {
-      that.setData({
-        active: '',
-        result: price
-      });
-    }
+    userName:'请输入预约人姓名',
+    phone:'请输入正确的预约人电话'
   },
 
   /**
@@ -35,73 +20,76 @@ Page({
     var that = this;
     that.setData({
       date:options.date,
-      dateEnd:options.dateEnd,
-      nightNum:options.nightNum
+      name:options.name,
+      priceSingel:options.price,
+      id:options.id
     });
-    wx.getUserInfo({
-      success: function (res) {
-        console.log(res);
-        var userInfo = res.userInfo
-        var nickName = userInfo.nickName
-        var avatarUrl = userInfo.avatarUrl
-        var gender = userInfo.gender //性别 0：未知、1：男、2：女
-        var province = userInfo.province
-        var city = userInfo.city
-        var country = userInfo.country
-
-        that.setData({
-          userName: nickName
-        });
-       }
-    })
-    wx.getStorage({
-      key: 'singleHotel',
-      success: function(res) {
-        var hotel=res.data;
-        console.log(22222);
-        console.log(hotel);
-        that.setData({
-          address:hotel.data.address,
-          hotelName:hotel.name,
-          phone:hotel.data.phone,
-          id:hotel.data.id
-        })
-      },
-    })
-    // wx.getStorage({
-    //   key: 'singleHotel',
+    // wx.getUserInfo({
     //   success: function (res) {
-    //     var hotel = res.data;
-    //   }  
-    var integral = that.data.integral;//拥有积分
-    var deductible=integral/10;//可抵扣的金额
-    wx.getStorage({
-      key: 'spec',
-      success: function(res) {
-        that.setData({
-          price: res.data.price,
-          deductible: deductible,
-          result:res.data.price
-        });
-      },
-    });
-  },
+    //     console.log(res);
+    //     var userInfo = res.userInfo
+    //     var nickName = userInfo.nickName
+    //     var avatarUrl = userInfo.avatarUrl
+    //     var gender = userInfo.gender //性别 0：未知、1：男、2：女
+    //     var province = userInfo.province
+    //     var city = userInfo.city
+    //     var country = userInfo.country
 
+    //     that.setData({
+    //       userName: nickName
+    //     });
+    //    }
+    // })
+  },
+  userName:function(e){
+    this.setData({
+      userName: e.detail.value
+    })
+  },
+  phone:function(e){
+    this.setData({
+      phone: e.detail.value
+    })
+  },
   submit:function(){
     var that=this;
-    var address=that.data.address;
-    var check_in = that.data.date;
-    var check_out = that.data.dateEnd;
-    var hotel_name = that.data.hotelName;
-    var price = that.data.result;
-    var user_name = that.data.userName;
-    var integral = that.data.integral;
-    var hotel_id = that.data.id;
-    var user_phone='18787312252'
-    wx.setStorage({
-      key: 'orderList',
-      data: {user_phone, address, hotel_name, check_in, check_out, price, user_name, integral, hotel_id},
-    })
+    var userName=that.data.userName;
+    var phone=that.data.phone;
+    var preData = {
+      'name': that.data.userName,
+      'phone': that.data.phone,
+      'time': that.data.date
+    };
+    ////////////////////////////////////////
+    if (userName!=''&&userName!='请输入预约人姓名'&&phone!='请输入正确的预约人电话'&&phone!=''){
+      wx.request({
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        method: 'post',
+        url: app.globalData.webSite + '/weixin.php/wechat/createOrder',
+        data: {
+          weixin_user_id: wx.getStorageSync('weixin_user_id'),
+          total: that.data.priceSingel,
+          goods_id: that.data.id,
+          preData: JSON.stringify(preData),
+        },
+        success: function (res) {
+          console.log("----------");
+          console.log(res);
+          wx.navigateTo({
+            url: '/pages/medical/order_pay/index',
+          })
+        },
+      })
+      
+    }else{
+      wx.showModal({
+        title: '',
+        content: '您有信息未填写',
+      })
+    }
+    
   },
 
   /**

@@ -1,29 +1,23 @@
 {
   "pages":[
+    
    "pages/index/index",
+   "pages/load/index",
    "pages/medical/index/index",
    "pages/wordsOne/index",
     "pages/me/index/index",
     "pages/case/index",
     "pages/order/index/index",
    "pages/aboutUs/index/index",
-    
     "pages/medical/detail/index",
     "pages/medical/order/index",
     "pages/medical/order_pay/index",
-    
-    
-   
     "pages/me/score/index",
-   
-    
-    
     "pages/order/detail/index",
     "pages/me/refund/index",
-   
     "pages/me/score_rule/index",
     "pages/me/phone_update/index"
-    
+   
    
     
 
@@ -58,8 +52,8 @@
       },
       {
         "pagePath": "pages/me/index/index",
-        "iconPath": "img/我的2.png",
-        "selectedIconPath": "img/member_icon.png",
+        "iconPath": "img/我的1.png",
+        "selectedIconPath": "img/我的2.png",
         "text": "会员中心"
       },{
         "pagePath": "pages/aboutUs/index/index",

@@ -11,7 +11,7 @@
           <view class='cus-table-cell'>
             <view class='block'>
               <view class='hotel'>
-              <text>{{hotelName}}</text>
+              <text>{{name}}</text>
               </view>
               <view class='time'>
                 <text>{{date}}</text>
@@ -31,27 +31,16 @@
           <text>手术</text>
         </view>
         <view class='right'>
-          <text class='num'>1</text><text class='between'>间</text>
+          <text class='num'>{{name}}</text><text class='between'></text>
         </view>
       </view>
       <view class='middle'>
         <view class='left'>预约人</view>
-        <view class='right'>{{userName}}</view>
+        <view class='right inputBox' ><input type='text' bindinput='userName' placeholder='请输入预约人姓名' /></view>
       </view>
       <view class='bottom'>
         <view class='left'>手机</view>
-        <view class='right'>18787312252</view>
-      </view>
-    </view>
-    <!--主体第三块-->
-    <view class='main3'>
-      <view class='main3_1'>
-        <view class='left'>
-          <text>可用 {{integral}} 积分抵用 {{deductible}} 元</text>
-        </view>
-        <view class='right'>
-          <switch bindchange="switchChange"/>
-        </view>
+        <view class='right inputBox'><input type='number' bindinput='phone' placeholder='请输入正确的预约人电话'/></view>
       </view>
     </view>
     <!--主体第四块-->
@@ -67,24 +56,13 @@
       <view class='details center'>
         <view class='p {{active}}'>
           <view class='left'>
-            <text>2017-9-2  (1间)</text>
+            <text>{{date}}  {{name}}</text>
           </view>
           <view class='middle'>
             
           </view>
           <view class='right'>
-            <text>￥{{price}}</text>
-          </view>
-        </view>
-        <view class='p score {{active}}'>
-          <view class='left'>
-            <text>积分抵用</text>
-          </view>
-          <view class='middle'>
-            
-          </view>
-          <view class='right'>
-            <text>￥{{deductible}}</text>
+            <text>￥{{priceSingel}}</text>
           </view>
         </view>
         <view class='p'>
@@ -95,7 +73,7 @@
             
           </view>
           <view class='right'>
-            <text>￥{{result}}</text>
+            <text>￥{{priceSingel}}</text>
           </view>
         </view>
       </view>
@@ -103,12 +81,12 @@
     <!--主体第六块-->
     <view class='main6'>
       <view class='price'>
-        <text>￥{{result}}</text>
+        <text>￥{{priceSingel}}</text>
       </view>
       <view class='submit'>
-        <navigator url='/pages/medical/order_pay/index?result={{result}}'>
+        <!-- <navigator url='/pages/medical/order_pay/index'> -->
           <button class='bg-blue' bindtap='submit'>提交订单</button>
-        </navigator>
+        <!-- </navigator> -->
       </view>
     </view>
   </view>

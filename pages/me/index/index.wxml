@@ -31,7 +31,7 @@
                 </navigator>
        </view><!--orderList结束-->
     </view><!--order结束-->
-    <view class="score">
+    <!-- <view class="score">
         <navigator url="../score/index">
             <text>我的积分</text>
             <text class="ft">2333</text>
@@ -40,8 +40,8 @@
             <text class='myScore'>积分规则</text>
             <text class="ft">1分抵1元</text>
         </navigator>
-     </view><!--score结束-->
-     <view class="phone">
+     </view>score结束 -->
+     <view class="score">
          <navigator url="../phone_update/index">
             <text>更换手机号</text>
         </navigator>

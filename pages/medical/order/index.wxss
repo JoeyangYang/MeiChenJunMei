@@ -53,12 +53,15 @@
   margin-left: 5%;
   line-height: 80rpx;
   color: #CCCCCC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .main2 .top .left{
-  width: 50%;
+  width: 36%;
   display: inline-block;}    
 .main2 .top .right{
-  width: 15%;
+  width: 45%;
   color: black;
   display: inline-block;
   letter-spacing: 12rpx;}
@@ -69,25 +72,34 @@
   margin-left: 5%;
   line-height: 80rpx;
   color: #CCCCCC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .main2 .middle .left{
-  width: 50%;
-  display: inline-block;}  
+  width: 36%;
+  display: inline-block;
+   
+  }  
 .main2 .middle .right{
-  width: 15%;
+  width: 45%;
   color: black;
   display: inline-block;}
+  
 .main2 .bottom{
   width: 95%;
   margin-left: 5%;
   line-height: 80rpx;
   color: #CCCCCC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .main2 .bottom .left{
-  width: 50%;
+  width: 36%;
   display: inline-block;}  
 .main2 .bottom .right{
-  width: 15%;
+  width: 45%;
   color: black;
   display: inline-block;}
 /*主体第三块*/

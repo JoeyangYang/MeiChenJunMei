@@ -9,11 +9,8 @@
         </view>           
     </view><!--bg-box结束-->
     <view class="scorePub_box">
-   <view class="word">
-               V拉美是目前可对抗地球引力，一次治疗即可看到效果达到
-还原青春的抗衰老技术。因其出血微少、不剥离面部组织的微创
-除皱优势，在紧肤抗衰领域备受欢迎。</view>
-<view class='title'>微创</view>
+   <view  class="word">{{hotel.describe}}</view>
+<!-- <view class='title'>微创</view>
 <view class='word'>
      V拉美科学运用人体下垂 通道（无血管、无神经）与整体组
 合设计，在颞部发际内进行微小切口植入提升材料，精微缝合，
@@ -27,7 +24,7 @@
 <view class='word'>
       术后提升效果清晰可见，提拉与修复同时进行，不断促进皮
 下胶原新生及皮肤血液循环，让皮肤光亮、富有弹性。
-     </view>
+     </view> -->
     </view><!--scorePub_box结束-->
    <view class="section">
   <picker mode="date" value="{{date}}" start="{{date}}"  bindchange="bindDateChange">
@@ -37,6 +34,6 @@
   </picker>
 </view>
 </view><!--score结束--><!--pages/me/score/index.wxml-->
- <navigator url="../order/index?date={{date}}">
+ <navigator url="../order/index?date={{date}}&name={{hotel.name}}&price={{hotel.price}}&id={{hotel.id}}">
         <view class='foot'>预约手术</view>
  </navigator>

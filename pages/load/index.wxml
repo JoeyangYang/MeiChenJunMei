@@ -1,0 +1,3 @@
+<!--pages/load/index.wxml-->
+
+<contact-button size='40' session-from='weapp'></contact-button>
