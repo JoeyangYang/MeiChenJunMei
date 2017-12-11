@@ -26,32 +26,6 @@ Page({
       userName:options.userName,
       phone:options.phone
     });
-    // wx.getUserInfo({
-    //   success: function (res) {
-    //     console.log(res);
-    //     var userInfo = res.userInfo
-    //     var nickName = userInfo.nickName
-    //     var avatarUrl = userInfo.avatarUrl
-    //     var gender = userInfo.gender //性别 0：未知、1：男、2：女
-    //     var province = userInfo.province
-    //     var city = userInfo.city
-    //     var country = userInfo.country
-
-    //     that.setData({
-    //       userName: nickName
-    //     });
-    //    }
-    // })
-  },
-  userName:function(e){
-    this.setData({
-      userName: e.detail.value
-    })
-  },
-  phone:function(e){
-    this.setData({
-      phone: e.detail.value
-    })
   },
   submit:function(){
     var that=this;
@@ -124,29 +98,14 @@ Page({
                   },
                 })
               } else {
-                //console.log("用户点击取消");
-                //var wrap_fee = that.data.fee;
-                //var packing_fee = that.data.sendFee;
                 wx.navigateTo({
-                  url: '/pages/order/index/index?orderid=' + orderid,
+                  url: '/pages/order/index/index?orderid=' + orderid+'&status=-1',
                 })
               }
-
             }
           })
         },
       })
-       // wx.navigateTo({
-          //   url: '/pages/medical/order_pay/index',
-          // })
-    //姓名电话手动输入
-    // }else{
-    //   wx.showModal({
-    //     title: '',
-    //     content: '您有信息未填写',
-    //   })
-    // }
-    
   },
 
   /**
