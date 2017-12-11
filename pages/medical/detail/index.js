@@ -2,6 +2,7 @@
 var qqmapsdk;
 var QQMapWX = require('../../../libs/qqmap-wx-jssdk.min.js');
 var data=new Date();
+var app=getApp();
 Page({
 
   /**
@@ -10,6 +11,8 @@ Page({
   data: {
     testHandle: '-1',
     date: '2017-09-01',
+    userName:'',
+    userPhone:'',
     datas: [
       [
         {
@@ -52,60 +55,52 @@ Page({
     indicatorActiveColor: "#f54556"
   },
   bindDateChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       date: e.detail.value
     })
   },
-  //点击事件
-  testClick: function(e) {
-    var that = this;
-    var index = e.currentTarget.dataset.index;
-    var testHandle = that.data.testHandle;
-    var spec = e.currentTarget.dataset.spec;
-    wx.setStorage({
-      key: 'spec',
+  footJump:function(){
+    var that=this;
+    var date=that.data.date;
+    var name=that.data.hotel.name;
+    var price = that.data.hotel.price;
+    var id = that.data.hotel.id;
+    //请求接口数据
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: 'get',
+      url: app.globalData.webSite + '/weixin.php/wechat/getUserinfo',
       data: {
-        spec: spec
-      }
-    });
-    wx.getStorage({
-      key: 'singleHotel',
-      success: function(res) {
-        var hotel = res.data;
-        if (index == testHandle) {
-          //数据绑定
-          that.setData({
-            hotel: hotel,
-            testHandle: '-1'
+        weixin_user_id: wx.getStorageSync("weixin_user_id"),
+      },
+      success: function (res) {
+        if (res.data.data.length!=0){
+          res.data.data.forEach(function (val, key) {
+            if (val.name == '' || val.phone == '') {
+              wx.navigateTo({
+                url: '/pages/me/phone_update/index'
+              })
+            }
+            else {
+              wx.navigateTo({
+                url: '/pages/medical/order/index?data=' + date + '&name=' + name + '&price=' + price + '&id=' + id + '&userName=' + val.name + '&phone=' + val.phone,
+              })
+            }
           });
-        }else {
-          hotel.data.homeStyle[index].active = 'active';
-          //数据绑定
-          that.setData({
-            hotel: hotel,
-            testHandle: index
-          })
-        }
+        }  
       }
-    })
+    }) 
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that = this;
-    wx.getStorage({
-      key: 'singleHotel',
-      success: function(res) {
-        console.log("缓存");
-        console.log(res);
-        var hotel = res.data;
-        that.setData({
-          hotel: hotel,
-        });
-      }
+    var hotel = JSON.parse(options.single);
+    that.setData({
+      hotel: hotel,
     });
     //预约时间
     var y = data.getFullYear();
@@ -127,6 +122,7 @@ Page({
       startTime: startTime,
       endTime: endTime
     });
+    
 
   },
 

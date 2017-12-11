@@ -17,5 +17,6 @@
 .order_detail .tips{padding:15rpx 76rpx;color:#cdcdcd;font-size:24rpx;}
 .foot{height:80rpx;border-top:3px solid #d7d7d7;line-height:  80rpx;font-size: 28rpx;position: fixed;bottom: 0;width:100%;}
 .foot navigator{display: inline-block;text-align: center;}
+.foot view{background:#f54556;color:#fff;text-align: center;}
 .foot navigator:first-child{width:30%;background: #fff;color:#f54556;}
 .foot navigator:last-child{width:70%;background:#f54556;color:#fff;}

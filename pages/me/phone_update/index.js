@@ -1,6 +1,7 @@
 // pages/me/phone_update/index.js
-var winWidth = 0
-var winHeight = 0  
+var winWidth = 0;
+var winHeight = 0;
+var app=getApp(); 
 Page({
 
   /**
@@ -11,29 +12,56 @@ Page({
     height: "100",
     second:3,
     className:'model',
-     on:'on1' 
+     on:'on1' ,
+     userName:'',
+     userPhone:''
     
   },
-  //获取用户输入值
-  bindInput: function (e) {
+  //获取用户名
+  userName: function (e) {
     var value = e.detail.value;
     this.setData({
-      modifiy_phone: value
+      userName: value
+    });
+  },
+  //获取用户电话
+  userPhone: function (e) {
+    var value = e.detail.value;
+    this.setData({
+      userPhone: value
     });
   },
   //修改手机号
 confirm:function(e){
   var that=this;
-   var modifiy_phone = that.data.modifiy_phone;
+   var userName = that.data.userName;
+   var userPhone=that.data.userPhone;
    //console.log(modifiy_phone);
-  //  if (modifiy_phone == ''){
-  //    that.setData({
-  //      className: 'model',
-  //      on: 'on1'
-  //    });
-  //    console.log(11111);
-  //  }else{
-     console.log(22222);
+   if (userName == '' || userPhone==''){
+     that.setData({
+       className: 'model',
+       on: 'on1'
+     });
+     wx.showModal({
+       title: '',
+       content: '您有信息填写不完整',
+     })
+     console.log(11111);
+   }else{
+     //请求接口数据
+     wx.request({
+       header: {
+         "Content-Type": "application/x-www-form-urlencoded"
+       },
+       method: 'POST',
+       url: app.globalData.webSite + '/weixin.php/wechat/userinfoComplete',
+       data: {
+         name: userName,
+         phone: userPhone,
+         weixin_user_id: wx.getStorageSync("weixin_user_id"),
+       },
+       success: function (res) {
+           //  console.log(22222);
      that.setData({
        className: 'model1',
        on: 'on'
@@ -51,7 +79,9 @@ confirm:function(e){
          })
        }
      }, 1000);
-   
+       }
+     }) 
+   } 
    
 },
   /**
@@ -73,6 +103,8 @@ confirm:function(e){
     that.setData({
       left: left
     });
+    
+
     
   },
 

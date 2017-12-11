@@ -2,19 +2,19 @@
 <view class="case_box">
     <view class="bg_black"></view>
     <view class="bg_grey"></view>
-    <block wx:for="{{case}}" wx:key="">
+    <block wx:for="{{caseList}}" wx:key="">
         <view class='wrap_box'>
             <view class='wrap'>
                 <view class='content'>
-                    <image src='{{item.beforeSrc}}'></image>
-                    <text>{{item.beforeText}}</text>
+                    <image src='{{website}}{{item.advert_img1}}'></image>
+                    <text>手术前</text>
                 </view><!--content结束-->
                 <view class='img'>
                     <image src='../../img/red_arrow.png' class='arrow'></image>
                 </view>
                 <view class='content'>
-                    <image src='{{item.afterSrc}}'></image>
-                    <text>{{item.afterText}}</text>
+                    <image src='{{website}}{{item.advert_img2}}'></image>
+                    <text>手术后</text>
                 </view><!--content结束-->
             </view><!--wrap结束-->
             <view class='line'></view>

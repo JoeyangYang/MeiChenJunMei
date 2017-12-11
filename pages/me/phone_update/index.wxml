@@ -1,19 +1,21 @@
 <!--pages/me/phone_update/index.wxml-->
 <view class="phone_update">
-   <view  class="check">
+<!-- 有短信接口时，获取验证码 -->
+   <!-- <view  class="check">
       <input type="number" placeholder="输入新的手机号" bindinput='bindInput'/>
       <button class='bg-blue'>发送验证码</button>
-   </view>
-    <input type="number" placeholder="输入验证码" class="code"/>  
+   </view> -->
+   <input type="text" placeholder="输入您的姓名" class="code userName" bindinput='userName'/>
+    <input type="number" placeholder="输入您的电话" class="code" bindinput='userPhone'/>  
    
 </view><!--phone_update-->
 <view class="bottomBox bg-blue" bindtap="confirm">
-   确认更换
+  确定
     </view>
      <view class="{{className}}" style="width:'{{winWidth}}';height:'{{winHeight}}'">
         
     </view>
      <view class="show {{on}}" style="width:{{width}}px;height:{{height}}px;left:{{left}}px">
-       <text class='success'>更换成功</text>
+       <text class='success'>完善成功</text>
        <text class='skip'><text class='dot'>. . .</text>页面将在{{second}}秒后自动跳转<text class='dot'>. . .</text></text>
     </view>

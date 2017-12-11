@@ -9,41 +9,35 @@
     </view><!--userImg结束-->
     <view class="order">
        <view class="myOrder">
-          <navigator url="../../order/index/index?status=0"><text>我的预约</text><text class="rt">全部预约></text></navigator>
+          <navigator url="../../order/index/index?status=-1"><text>我的预约</text><text class="rt">全部预约></text></navigator>
           <!-- <navigator class="rt">全部订单</navigator> -->
        </view>
        <view class="orderList">
-                <navigator class="pubOrder" url="../../order/index/index?status=1">
+                <navigator class="pubOrder" url="../../order/index/index?status=0">
                     <image src="../../../img/check_in.png"></image>
-                    <text>待手术</text>
+                    <text>待付款</text>
                 </navigator>
-                  <navigator class="pubOrder" url="../../order/index/index?status=2">
+                  <navigator class="pubOrder" url="../../order/index/index?status=1">
                     <image src="../../../img/check_out.png"></image>
+                    <text>已付款</text>
+                </navigator>
+                <navigator class="pubOrder" url="../../order/index/index?status=2">
+                    <image src="../../../img/money.png"></image>
                     <text>已完成</text>
                 </navigator>
                 <navigator class="pubOrder" url="../../order/index/index?status=3">
-                    <image src="../../../img/money.png"></image>
-                    <text>退款中</text>
-                </navigator>
-                <navigator class="pubOrder" url="../../order/index/index?status=4">
                     <image src="../../../img/money2.png"></image>
-                    <text>已退款</text>
+                    <text>退款中</text>
                 </navigator>
        </view><!--orderList结束-->
     </view><!--order结束-->
-    <!-- <view class="score">
-        <navigator url="../score/index">
-            <text>我的积分</text>
-            <text class="ft">2333</text>
-        </navigator>
-        <navigator url="../score_rule/index">
-            <text class='myScore'>积分规则</text>
-            <text class="ft">1分抵1元</text>
-        </navigator>
-     </view>score结束 -->
      <view class="score">
          <navigator url="../phone_update/index">
-            <text>更换手机号</text>
+            <text>完善信息</text>
         </navigator>
      </view><!--phone结束-->   
 </view><!--me_index结束-->
+<view class='copyright'>
+    <view>技术开发服务商：昆明点度科技有限公司</view>
+    <view>Kunming point of degree</view>
+</view>

@@ -17,7 +17,7 @@
                 <text>{{date}}</text>
               </view>
               <view class='address'>
-                <text>{{address}}</text>
+                <text>昆明市西山区美诚均美医疗美容</text>
               </view>
           </view>
           </view>
@@ -36,11 +36,13 @@
       </view>
       <view class='middle'>
         <view class='left'>预约人</view>
-        <view class='right inputBox' ><input type='text' bindinput='userName' placeholder='请输入预约人姓名' /></view>
+        <!-- <input type='text' bindinput='userName' placeholder='请输入预约人姓名' /> -->
+        <view class='right inputBox' >{{userName}}</view>
       </view>
       <view class='bottom'>
         <view class='left'>手机</view>
-        <view class='right inputBox'><input type='number' bindinput='phone' placeholder='请输入正确的预约人电话'/></view>
+        <!-- <input type='number' bindinput='phone' placeholder='请输入正确的预约人电话'/> -->
+        <view class='right inputBox'>{{phone}}</view>
       </view>
     </view>
     <!--主体第四块-->

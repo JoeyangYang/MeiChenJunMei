@@ -34,6 +34,6 @@
   </picker>
 </view>
 </view><!--score结束--><!--pages/me/score/index.wxml-->
- <navigator url="../order/index?date={{date}}&name={{hotel.name}}&price={{hotel.price}}&id={{hotel.id}}">
-        <view class='foot'>预约手术</view>
- </navigator>
+ <!-- <navigator url="../order/index?date={{date}}&name={{hotel.name}}&price={{hotel.price}}&id={{hotel.id}}"> -->
+        <view class='foot' bindtap='footJump'>预约手术</view>
+ <!-- </navigator> -->

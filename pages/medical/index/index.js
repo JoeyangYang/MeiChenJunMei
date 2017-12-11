@@ -1,7 +1,7 @@
 // pages/hotel/index/index.js
 /**
  * allList:所有项目
- * category:点击类别，按类别查询
+ * category:点击类别,按类别查询
  */
 var data=new Date();
 var app = getApp();
@@ -133,11 +133,11 @@ Page({
     var listAreaBelong = that.data.typeLeft;
     var listArea;
     //清空
-    listAreaBelong.forEach(function (val, key) {
+    listAreaBelong.forEach(function (val,key) {
       listAreaBelong[key].active = '0';
     });
     //改变active
-    listAreaBelong.forEach(function (val, key) {
+    listAreaBelong.forEach(function (val,key) {
       if (val.id == id) {
         listAreaBelong[key].active = '1';
         
@@ -293,6 +293,17 @@ Page({
       listArea: listArea,
     });
   },
+  empty:function(){
+    var that = this;
+    that.setData({
+      color: '',
+      display: false,
+      searchStyle: '',
+      searchHandle: '0',
+      zIndex: "-1",
+      box: ''
+    });
+  },
   confire:function(){
     var that = this;
     that.setData({
@@ -311,7 +322,6 @@ Page({
       method: 'get',
       data:{
         id: categroy_two_single.id
-      
       },
       url: app.globalData.webSite + '/weixin.php/wechat/searchCate/id/2',
       success: function (res) {
@@ -323,18 +333,11 @@ Page({
   },
   //类别确定按钮，点击跳转到预约页面
   addChange:function(e){
-    console.log(e);
     var that=this;
-    var singleHotel = e.currentTarget.dataset.singlehotel;
-    wx.setStorage({
-      key: 'singleHotel',
-      data: singleHotel,
-      success:function(res){
-        wx.navigateTo({
-          url: '/pages/medical/detail/index',
+    var singleHotel = JSON.stringify(e.currentTarget.dataset.singlehotel);
+    wx.navigateTo({
+      url: '/pages/medical/detail/index?single=' + singleHotel,
         })
-      }
-    });
   },
 
   /**

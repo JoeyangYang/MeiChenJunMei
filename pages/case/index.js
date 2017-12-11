@@ -1,47 +1,40 @@
 // pages/case/index.js
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
+  
   data: {
-      case:[
-        { 
-          id:'1',
-          beforeSrc:'../../img/case_before.jpg',
-          beforeText:'手术前',
-          afterSrc:'../../img/case_before.jpg',
-          afterText:'手术后'
-        },
-        {
-          id: '2',
-          beforeSrc: '../../img/case_before.jpg',
-          beforeText: '手术前',
-          afterSrc: '../../img/case_before.jpg',
-          afterText: '手术后'
-        }, 
-        {
-          id: '3',
-          beforeSrc: '../../img/case_before.jpg',
-          beforeText: '手术前',
-          afterSrc: '../../img/case_before.jpg',
-          afterText: '手术后'
-        },
-        {
-          id: '4',
-          beforeSrc: '../../img/case_before.jpg',
-          beforeText: '手术前',
-          afterSrc: '../../img/case_before.jpg',
-          afterText: '手术后'
-        },
-      ]
+    website: app.globalData.webSite,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that=this;
+    //请求接口数据
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: 'get',
+      url: app.globalData.webSite + '/weixin.php/wechat/getAdvert',
+      success: function (res) {
+       
+        if(res.data.code==0){
+          console.log("===================");
+          console.log(res.data.data);
+        }
+        //set数据
+        that.setData({
+          caseList: res.data.data
+        });
+      }
+    })
+
   },
 
   /**

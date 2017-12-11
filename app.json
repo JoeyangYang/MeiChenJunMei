@@ -10,6 +10,7 @@
     "pages/order/index/index",
    "pages/aboutUs/index/index",
     "pages/medical/detail/index",
+    "pages/medical/refund/index",
     "pages/medical/order/index",
     "pages/medical/order_pay/index",
     "pages/me/score/index",

@@ -1,41 +1,49 @@
 <view class="order_index">
    <view class="top">
-       <text class="{{on}}" data-active="0" bindtap="orderNavClick">全 部</text>
-       <text class="{{on}}" data-active="1" bindtap="orderNavClick">待手术</text>
+       <text class="{{on}}" data-active="-1" bindtap="orderNavClick">全 部</text>
+       <text class="{{on}}" data-active="0" bindtap="orderNavClick">待付款</text>
+       <text class="{{on}}" data-active="1" bindtap="orderNavClick">已付款</text>
        <text class="{{on}}" data-active="2" bindtap="orderNavClick">已完成</text>
        <text class="{{on}}" data-active="3" bindtap="orderNavClick">退款中</text>
-       <text class="{{on}}" data-active="4" bindtap="orderNavClick">已退款</text>
         <view class="{{animation}}"></view>
    </view>
-   <block wx:key="" wx:for="{{listContent}}" wx:for-item="item">
-   <block wx:key="" wx:for="{{item.content}}" wx:for-item="item1">
+   <block wx:key="" wx:for="{{hotelList}}" wx:for-item="item">
+   
     <view class="detail">
-      <navigator url="../detail/index?id={{item1.id}}">
-        
+      <!-- <navigator url="../detail/index?detail={{item}}"> -->
+    <view bindtap='detail' data-detail="{{item}}">  
        <view class='box'>
-          <text class="lt">{{item1.name}}</text>
+          <text class="lt">{{item.name}}</text>
           <text class="arrow">></text>
-          <text class="rt">{{item1.status}}</text>
+          <text class="rt">{{item.status}}</text>
         </view>
       <view class="content">
         <view class="lc">
-            <text>{{item1.address}}</text>
-            <text>{{item1.detail}}</text>
+            <text>{{item.name}}</text>
+            <text>{{item.date}}</text>
+            <text>{{hospitalAddress}}</text>
+           
         </view>
         <view class="rc">￥{{item.price}}</view>
       </view>
-     
-       </navigator>
-      <view class="btns">
-      <navigator url="../../me/refund/index?id={{item.id}}&price={{item.price}}" class="refund {{item.refund}}"> 
-            申请退款
-      </navigator>
-      <navigator url="/pages/medical/detail/index" class="book">
-            立即预约
-      </navigator>
-        
-      </view>
+     </view>
+       <!-- </navigator> -->
+          <view class="btns">
+              <view wx:if="{{item.status=='已完成'||item.status=='退款中'}}" class='again judge' bindtap='jump'> 再次预约</view>
+              <view wx:if="{{item.status=='待付款'}}" bindtap='pay' class='judge' data-price="{{item.price}}" data-orderid="{{item.orderid}}" bindtap='pay' >立即付款
+              </view>
+              <view wx:if="{{item.status=='已付款'}}"class='judge'data-price="{{item.price}}"data-orderid="{{item.orderid}}" bindtap='appointment' data-single="{{item}}">立即预约
+              </view>
+              <view wx:if="{{item.status=='已付款'}}" bindtap='refund' class='judge' data-sum="{{item.price}}" data-orderid="{{item.orderid}}" bindtap='refund'>申请退款
+              </view>
+              
+              </view><!--btns结束-->
       </view><!--detail结束-->
-      </block>
+   
     </block>
 </view><!--order_index结束-->
+
+<view class="{{empty}}" style='margin-top:{{height}}rpx' >
+ <image src='/img/empty.png'></image>
+ <view bindtap="goIndex">暂无订单,快去下单吧！</view>
+</view>

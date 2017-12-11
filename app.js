@@ -54,6 +54,8 @@ App({
     userInfo: null,
     openId: '',
     loginStatus: false,
-    webSite: 'http://192.168.3.13/'
+    webSite: 'http://192.168.3.13/',
+    address:'昆明西山区美辰均美医疗美容',
+    phone:'0871-6666666'
   }
 })

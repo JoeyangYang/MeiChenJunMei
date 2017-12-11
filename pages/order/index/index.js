@@ -9,86 +9,55 @@ Page({
     animation:'animation0',
     show:'show',
     flag:true,
-    list:[
-      {
-        id:'1',
-        content:[
-          {
-            id:'11',
-            status: "待手术",
-            address:'昆明西山区',
-            name:'面部紧致提升_待手术'
-          },
-          {
-            id: '12',
-            status: "待手术",
-            address: '昆明五华区',
-            name: '面部紧致提升_待手术'
-          },
-        ]
-
-      },
-      {
-        id: '2',
-        content: [
-          {
-            id: '21',
-            status: "已完成",
-            address: '昆明西山区2',
-            name: '面部紧致提升_已完成'
-          },
-          {
-            id: '22',
-            status: "已完成",
-            address: '昆明五华区2',
-            name: '面部紧致提升_已完成'
-          },
-        ]
-
-      },
-      {
-        id: '3',
-        content: [
-          {
-            id: '31',
-            status: "退款中",
-            address: '昆明西山区3',
-            name: '面部紧致提升_退款中'
-          },
-          {
-            id: '32',
-            status: "退款中",
-            address: '昆明五华区3',
-            name: '面部紧致提升_退款中'
-          },
-        ]
-
-      },
-      {
-        id: '4',
-        content: [
-          {
-            id: '41',
-            status: "已退款",
-            address: '昆明西山区4',
-            name: '面部紧致提升_已退款'
-          },
-          {
-            id: '42',
-            status: "已退款",
-            address: '昆明五华区4',
-            name: '面部紧致提升_已退款'
-          },
-        ]
-
-      }
-    ]
+    hospitalAddress: app.globalData.address,
+    empty: 'empty_box',
+  },
+  //跳转详情页
+  detail:function(e){
+    //console.log(e.currentTarget.dataset.detail);
+    var detail=JSON.stringify(e.currentTarget.dataset.detail)
+    wx.navigateTo({
+      url:'/pages/order/detail/index?detail='+detail
+    })
+  },
+  //申请退款
+  refund:function(e){
+    var that = this;
+    var price = e.currentTarget.dataset.sum;
+    var orderid = e.currentTarget.dataset.orderid;
+    wx.navigateTo({
+      url: '/pages/medical/refund/index?price=' + price + '&orderid=' + orderid,
+    })
+  },
+  //跳转到首页
+  jump:function(){
+    wx.switchTab({
+      url: '/pages/index/index',
+    })
+  },
+  //跳转到预约页面
+  appointment:function(e){
+    var singleHotel = JSON.stringify(e.currentTarget.dataset.single);
+    wx.navigateTo({
+      url: '/pages/medical/detail/index?single=' + singleHotel,
+    })
+  },
+  //跳转到支付页面
+  pay:function(e){
+    var that=this;
+    var price = e.currentTarget.dataset.price;
+    var orderid = e.currentTarget.dataset.orderid;
+    wx.navigateTo({
+      url: '/pages/medical/order_pay/index?price=' + price + '&orderid=' + orderid,
+    })
   },
   //事件处理
   orderNavClick: function(e) {
     var that = this;
     //获取导航index值(1开始)
-    var index = e.currentTarget.dataset.active;  
+    var index = e.currentTarget.dataset.active; 
+    index++;
+    var status = e.currentTarget.dataset.active; 
     var on = 'on' + index;
     var animation='animation'+index;
     that.setData({
@@ -96,66 +65,45 @@ Page({
       animation: animation
     });
     //index -= 1;
-    //非数据库数据
-    var list=that.data.list;
-    var lists=[];
-    list.forEach(function(val,key){
-      if(index==0){
-        val.content.forEach(function(val2,key2){
-          lists.push(val);
-        });
-      }
-      
-      if(val.id == index){
-        val.content.forEach(function(val1,key1){
-         lists.push(val);
-        });
-    } 
-    });
-    that.setData({
-      listContent:lists
-    });
     //请求接口数据
-      // wx.request({
-      //   header: {
-      //     "Content-Type": "application/x-www-form-urlencoded"
-      //   },
-      //   method: 'POST',
-      //   url: app.globalData.webSite + '/Home/Wechat/orderSelectByStatus',
-      //   data: {
-      //     status: index
-      //   },
-      //   success: function (res) {
-      //     var data = res.data;
-      //     //订单状态翻译
-      //     if (data.code == '200') {
-      //       data.data.forEach(function (val, key) {
-      //         if (val.status == '0') {
-      //           data.data[key].status = '待手术';
-      //           data.data[key].refund = 'show';
-      //         }
-      //         if (val.status == '1') {
-      //           data.data[key].status = '已完成';
-      //           data.data[key].refund = 'show';
-      //         }
-      //         if (val.status == '2') {
-      //           data.data[key].status = '退款中';
-      //         }
-      //         if (val.status == '3') {
-      //           data.data[key].status = '已退款';
-      //         }
-      //       });
-            
-           
-      //     }else{
-      //       data.data=[];
-      //     }
-      //     //set数据
-      //     that.setData({
-      //       hotelList: data.data
-      //     });
-      //   }
-      // })
+      wx.request({
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        method: 'get',
+        url: app.globalData.webSite + '/weixin.php/wechat/getOrder',
+        data: {
+          status: status
+        },
+        success: function (res) {
+          var data = res.data;
+          //订单状态翻译
+          if (data.code == '0') {
+            data.data.forEach(function (val, key) {
+              if (val.status == '0') {
+                data.data[key].status = '待付款';
+              
+              }
+              if (val.status == '1') {
+                data.data[key].status = '已付款';
+                
+              }
+              if (val.status == '2') {
+                data.data[key].status = '已完成';
+              }
+              if (val.status == '3') {
+                data.data[key].status = '退款中';
+              }
+            });
+          }else{
+            data.data=[];
+          }
+          //set数据
+          that.setData({
+            hotelList: data.data
+          });
+        }
+       })
     
   },
 
@@ -163,73 +111,66 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   
     var that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        var height = res.windowHeight / 2;
+        console.log(height);
+        that.setData({
+          height: height
+        });
+      },
+    })
     var index=options.status;
+    index++;
+    var status = options.status;
     var animation = 'animation' + index;
     var on = 'on' + index;
-     //index -= 1;
-     //非数据库数据
-     var list = that.data.list;
-     var lists = [];
-     list.forEach(function (val, key) {
-       if (index == 0) {
-         val.content.forEach(function (val2, key2) {
-           lists.push(val);
-         });
-       }
-       if (val.id == index) {
-         val.content.forEach(function (val1, key1) {
-           lists.push(val);
-         });
-       }
-     });
-     that.setData({
-       listContent: lists
-     });
      //请求接口数据
-      // wx.request({
-      //   header: {
-      //     "Content-Type": "application/x-www-form-urlencoded"
-      //   },
-      //   method: 'POST',
-      //   url: app.globalData.webSite + '/Home/Wechat/orderSelectByStatus',
-      //   data: {
-      //     status: index
-      //   },
-      //   success: function (res) {
-      //     var data = res.data;
-      //     //订单状态翻译
-      //     if (data.code == '200') {
-      //       data.data.forEach(function (val, key) {
-      //         if (val.status == '0') {
-      //           data.data[key].status = '待手术';
-      //           data.data[key].refund = 'show';
-      //         }
-      //         if (val.status == '1') {
-      //           data.data[key].status = '已完成';
-      //           data.data[key].refund = 'show';
-      //         }
-      //         if (val.status == '2') {
-      //           data.data[key].status = '退款中';
+      wx.request({
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        method: 'get',
+        url: app.globalData.webSite + '/weixin.php/wechat/getOrder',
+        data: {
+          status: status
+        },
+        success: function (res) {
+          var data = res.data;
+          console.log("data");
+          console.log(res.data);
+          //订单状态翻译
+          if (data.code == '0') {
+            data.data.forEach(function (val, key) {
+              if (val.status == '0') {
+                data.data[key].status = '待付款';
                 
-      //         }
-      //         if (val.status == '3') {
-      //           data.data[key].status = '已退款';
-      //         }
-      //       });
+              }
+              if (val.status == '1') {
+                data.data[key].status = '已付款';
+                
+              }
+              if (val.status == '2') {
+                data.data[key].status = '已完成';
+                
+              }
+              if (val.status == '3') {
+                data.data[key].status = '退款中';
+              }
+            });
             
-      //     }else{
-      //      data.data=[];
-      //     }
-      //     //set数据
+          }else{
+           data.data=[];
+          }
+          //set数据
           that.setData({
-            //hotelList: data.data,
+            hotelList: data.data,
             animation: animation,
             on: on
           });
-        //}
-      // })
+        }
+      })
     
   },
 

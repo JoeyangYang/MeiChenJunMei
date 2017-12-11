@@ -76,13 +76,13 @@ page{background-color: #F8F8F8;}
 } 
 .main4 button{
   line-height: 85rpx;
-  color: white;
   border-radius: 0px;}   
 
 .payment{
-  background-color: #f54556;
+  color:#8B8B8B;
 }
 .active{
-  
+  color:#fff;
+   background-color: #f54556;
   transition: all 0.5s ease-in-out;
 }

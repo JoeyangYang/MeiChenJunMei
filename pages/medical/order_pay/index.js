@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    checked:false
+    checked:false,
+    active:''
   },
 
   /**
@@ -15,95 +16,76 @@ Page({
   onLoad: function (options) {
     var that = this;
     that.setData({
-      result: options.result
+      price: options.price,
+      orderid: options.orderid,
     });
   },
 
   switchTab:function(e){
-    // wx.switchTab({
-    //   url: '/pages/me/index/index'
-    // });
     var that = this;
-    wx.getStorage({
-      key: 'orderList',
-      success: function(res) {
-        wx.getStorage({
-          key: 'spec',
-          success: function (spec) {
-            //生成order_number
-            var order_number = '';
-            for (var i = 0; i < 32; i++) {
-              order_number += parseInt(Math.random() * 10)
-            }
+    if (that.data.checked == true) {
+      wx.request({
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        method: 'post',
+        data: {
+          weixin_user_id: wx.getStorageSync("weixin_user_id"),
+          orderid: that.data.orderid,
+        },
+        url: app.globalData.webSite + 'weixin.php/wechat/pay',
+        success: function (res) {
+          var timestamp = String(res.data.sdkData.timeStamp);
+          var nonceStr = res.data.sdkData.nonceStr;
+          var paySign = res.data.sdkData.paySign;
+          var Package = res.data.sdkData.package;
+          var signType = 'MD5';
+          var order_id = res.data.orderid;
+          wx.requestPayment({
+            'timeStamp': timestamp,
+            'nonceStr': nonceStr,
+            'package': Package,
+            'signType': signType,
+            'paySign': paySign,
+            'success': function (res) {
+              // console.log("支付成功");
+              wx.request({
+                header: {
+                  "Content-Type": "application/x-www-form-urlencoded"
+                },
+                method: 'post',
+                data: {
+                  weixin_user_id: wx.getStorageSync("weixin_user_id"),
+                  orderid: order_id,
+                },
+                url: app.globalData.webSite + 'weixin.php/wechat/confirmOrder',
+                success: function () {
+                  wx.navigateBack();
+                  // wx.navigateTo({
+                  //   url: '/pages/order/orderList/index',
+                  // })
+                },
+              })
 
-            //生成detail
-            var detail = '';
-            var specData = spec.data;
-            specData.spec.forEach(function (val, key) {
-              detail += val + ' ';
-            });
-            specData.member.forEach(function(val,key) {
-              detail += val + ' ';
-            });
-            // console.log('+++++++++++++++++++++');
-            // console.log('order_number:'+order_number);
-            // console.log('hotel_id:' + res.data.hotel_id);
-            // console.log('hotel_name:' + res.data.hotel_name);
-            // console.log('address:' + res.data.address);
-            // console.log('check_in:' + res.data.check_in);
-            // console.log('check_out:' + res.data.check_out);
-            // console.log('detail:' + detail);
-            // console.log('price:' + res.data.price);
-            // console.log('status:' + 0);
-            // console.log('user_name:' + res.data.user_name);
-            // console.log('user_phone:' + res.data.user_phone);
-            wx.request({
-              header: {
-                "Content-Type": "application/x-www-form-urlencoded"
-              },
-              url: app.globalData.webSite + '/Home/Wechat/orderAdd',
-              method: 'POST',
-              data: {
-                order_number: order_number,
-                hotel_id: res.data.hotel_id,
-                hotel_name: res.data.hotel_name,
-                address: res.data.address,
-                check_in: res.data.check_in,
-                check_out: res.data.check_out,
-                detail: detail,
-                price: res.data.price,
-                status: 0,
-                user_name: res.data.user_name,
-                user_phone: res.data.user_phone,
-              },
-              success: function (res) {
-                // console.log(res.data);
-                var code = res.data.code;
-                if(code==200){
-                   wx.switchTab({
-                   url: '/pages/me/index/index'
-                });
-                }
-              }
-            })
-          }
-        });
-      }
-    });
+            },
+            'fail': function (res) {
+
+              console.log("-----------");
+              console.log(res);
+            },
+
+          })
+        },
+      })
+    }//if结束
   },
 
   clickChecked:function(){
     var that=this;
-    var checked;
-    if(checked==false){
-      that.setData({
-        active:''
-      });
-    }else{
-      that.setData({
-        active: 'active'
-      });
-    }
+    that.setData({
+      checked: true,
+      active: 'active'
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
