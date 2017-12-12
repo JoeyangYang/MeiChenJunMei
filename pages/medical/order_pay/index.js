@@ -35,8 +35,6 @@ Page({
         },
         url: app.globalData.webSite + 'weixin.php/wechat/pay',
         success: function (res) {
-          console.log("00000000000");
-          console.log(res);
           var timestamp = String(res.data.sdkData.timeStamp);
           var nonceStr = res.data.sdkData.nonceStr;
           var paySign = res.data.sdkData.paySign;
@@ -50,7 +48,6 @@ Page({
             'signType': signType,
             'paySign': paySign,
             'success': function (res) {
-              // console.log("支付成功");
               wx.request({
                 header: {
                   "Content-Type": "application/x-www-form-urlencoded"

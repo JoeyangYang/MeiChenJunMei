@@ -31,6 +31,8 @@ Page({
     var that=this;
     var userName=that.data.userName;
     var phone=that.data.phone;
+    console.log("保存预约时间");
+    console.log(that.data.date);
     var preData = {
       'name': that.data.userName,
       'phone': that.data.phone,
@@ -86,8 +88,8 @@ Page({
                       },
                       url: app.globalData.webSite + 'weixin.php/wechat/confirmOrder',
                       success: function () {
-                        wx.navigateTo({
-                          url: '/pages/order/index/index',
+                        wx.switchTab({
+                          url: '/pages/me/index/index',
                         })
                       },
                     })
@@ -98,9 +100,10 @@ Page({
                   },
                 })
               } else {
-                wx.navigateTo({
-                  url: '/pages/order/index/index?orderid=' + orderid+'&status=-1',
+                wx.switchTab({
+                  url: '/pages/me/index/index',
                 })
+                //url: '/pages/order/index/index?orderid=' + orderid + '&status=-1',
               }
             }
           })

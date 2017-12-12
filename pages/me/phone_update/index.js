@@ -75,7 +75,7 @@ confirm:function(e){
        if (num == 0) {
          clearInterval(timer);
          wx.reLaunch({
-           url: '/pages/me/index/index',
+           url: '/pages/index/index',
          })
        }
      }, 1000);

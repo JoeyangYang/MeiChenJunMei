@@ -13,41 +13,6 @@ Page({
     date: '2017-09-01',
     userName:'',
     userPhone:'',
-    datas: [
-      [
-        {
-          id: '1',
-          image: '../../../img/aboutme_circle.jpg',
-        },
-        {
-          id: '2',
-          image: '../../../img/aboutme_circle2.jpg',
-        }
-      ],
-      [
-        {
-          id: '1',
-          image: '../../../img/aboutme_circle.jpg',
-        },
-        {
-          id: '2',
-          image: '../../../img/aboutme_circle2.jpg',
-        }
-      ],
-      [
-        {
-          id: '1',
-          image: '../../../img/aboutme_circle.jpg',
-
-        },
-        {
-          id: '2',
-          image: '../../../img/aboutme_circle2.jpg',
-        }
-      ],
-
-
-    ],
     indicatorDots: true,
     autoplay: true,
     interval: 2000,
@@ -78,7 +43,7 @@ Page({
       success: function (res) {
         if (res.data.data.length!=0){
           res.data.data.forEach(function (val, key) {
-            if (val.name == '' || val.phone == '') {
+            if (val.name == '' || val.phone == '' || val.name == null || val.phone==null) {
               wx.navigateTo({
                 url: '/pages/me/phone_update/index'
               })

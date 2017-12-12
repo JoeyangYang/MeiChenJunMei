@@ -44,11 +44,19 @@ Page({
   },
   //跳转到支付页面
   pay:function(e){
+    console.log("点击立即付款");
     var that=this;
     var price = e.currentTarget.dataset.price;
     var orderid = e.currentTarget.dataset.orderid;
     wx.navigateTo({
       url: '/pages/medical/order_pay/index?price=' + price + '&orderid=' + orderid,
+      success:function(res){
+        console.log("跳转成功");
+      },
+      fail:function(res){
+       console.log("跳转失败");
+       console.log(res);
+      },
     })
   },
   //事件处理
@@ -115,7 +123,6 @@ Page({
     wx.getSystemInfo({
       success: function (res) {
         var height = res.windowHeight / 2;
-        console.log(height);
         that.setData({
           height: height
         });

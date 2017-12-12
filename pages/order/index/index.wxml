@@ -20,7 +20,7 @@
       <view class="content">
         <view class="lc">
             <text>{{item.name}}</text>
-            <text>{{item.date}}</text>
+            <text>预约时间:{{item.date}}</text>
             <text>{{hospitalAddress}}</text>
            
         </view>
@@ -35,8 +35,7 @@
               <view wx:if="{{item.status=='已付款'}}"class='judge'data-price="{{item.price}}"data-orderid="{{item.orderid}}" bindtap='appointment' data-single="{{item}}">立即预约
               </view>
               <view wx:if="{{item.status=='已付款'}}" bindtap='refund' class='judge' data-sum="{{item.price}}" data-orderid="{{item.orderid}}" bindtap='refund'>申请退款
-              </view>
-              
+              </view>    
               </view><!--btns结束-->
       </view><!--detail结束-->
    
