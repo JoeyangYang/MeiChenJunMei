@@ -1,6 +1,7 @@
 /* pages/me/score/index.wxss */
+page{}
 .score{font-family: "微软雅黑";position: relative;}
-.score .bg_box{position:fixed;top:0;left:0;width:99.5%;z-index:100; }
+.score .bg_box{position:fixed;top:0;left:0;width:99.5%;z-index:100;}
 .score .bg{color: #fff;position: relative;background: #fff;}
 .score .bg .num{width:100%;position: absolute;bottom:80rpx;left:0;text-align: center;}
 .score .bg text{font-size:40rpx;font-weight: bold;}

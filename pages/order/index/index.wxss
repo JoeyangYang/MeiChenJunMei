@@ -36,6 +36,6 @@
 .empty_box1{text-align: center;}
 .empty_box1 image{width:100rpx;height:100rpx;}
 .empty_box1 view{margin-top:30rpx;color:#999;font-size:32rpx;}
-.empty_box{text-align: center;}
+/* .empty_box{text-align: center;}
 .empty_box image{width:100rpx;height:100rpx;}
-.empty_box view{margin-top:30rpx;color:#999;font-size:32rpx;}
+.empty_box view{margin-top:30rpx;color:#999;font-size:32rpx;} */

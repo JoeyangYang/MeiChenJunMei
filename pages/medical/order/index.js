@@ -7,16 +7,12 @@ Page({
    */
   data: {
     active: '',
-    userName:'请输入预约人姓名',
-    phone:'请输入正确的预约人电话'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("options");
-    console.log(options);
     var that = this;
     that.setData({
       date:options.data,
@@ -30,9 +26,7 @@ Page({
   submit:function(){
     var that=this;
     var userName=that.data.userName;
-    var phone=that.data.phone;
-    console.log("保存预约时间");
-    console.log(that.data.date);
+    var phone=that.data.phone; 
     var preData = {
       'name': that.data.userName,
       'phone': that.data.phone,

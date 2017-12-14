@@ -14,7 +14,6 @@ Page({
   },
   //跳转详情页
   detail:function(e){
-    //console.log(e.currentTarget.dataset.detail);
     var detail=JSON.stringify(e.currentTarget.dataset.detail)
     wx.navigateTo({
       url:'/pages/order/detail/index?detail='+detail
@@ -103,13 +102,24 @@ Page({
                 data.data[key].status = '退款中';
               }
             });
+            
           }else{
             data.data=[];
+            
           }
           //set数据
           that.setData({
             hotelList: data.data
           });
+          if (that.data.hotelList.length==0){
+            that.setData({
+              empty: 'empty_box1',
+            })
+          } else if (that.data.hotelList.length != 0){
+            that.setData({
+              empty: 'empty_box',
+            })
+          }
         }
        })
     
@@ -145,8 +155,6 @@ Page({
         },
         success: function (res) {
           var data = res.data;
-          console.log("data");
-          console.log(res.data);
           //订单状态翻译
           if (data.code == '0') {
             data.data.forEach(function (val, key) {
@@ -169,6 +177,7 @@ Page({
             
           }else{
            data.data=[];
+
           }
           //set数据
           that.setData({
@@ -176,6 +185,15 @@ Page({
             animation: animation,
             on: on
           });
+          if (that.data.hotelList.length == 0) {
+            that.setData({
+              empty: 'empty_box1',
+            })
+          } else if (that.data.hotelList.length != 0) {
+            that.setData({
+              empty: 'empty_box',
+            })
+          }
         }
       })
     

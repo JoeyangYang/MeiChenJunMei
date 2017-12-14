@@ -10,8 +10,8 @@
 .order_detail .info text{display: inline-block;}
 .order_detail .info text.book{color:#000;font-size:24rpx;font-weight: bold;}
 .order_detail .info .del_info{color:#cdcdcd;font-size:24rpx;}
-.order_detail .info .del_info text.lt{width:30%}
-.order_detail .info .del_info text.rt{width:70%;}
+.order_detail .info .del_info text.lt{width:20%}
+.order_detail .info .del_info text.rt{width:80%;}
 .order_detail .info .box{margin-top:25rpx;}
 .order_detail .info .box text{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 .order_detail .tips{padding:15rpx 76rpx;color:#cdcdcd;font-size:24rpx;}

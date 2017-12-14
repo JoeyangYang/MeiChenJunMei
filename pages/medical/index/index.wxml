@@ -52,7 +52,7 @@
           <view class="empty" bindtap='empty'><text style='color:#f54556'>清空</text></view>
           <view class="yes" bindtap="confire" data-ok="true" data-active="{{searchHandle}}"><text>确定</text></view>
         </view>
-      </view>
+      </view><!---city结束-->
     </view>  
   </view>
   <!--主体-->
@@ -69,7 +69,7 @@
         <!--酒店详情-->
         <view class="middle">
           <view  class="hotel"><text>{{item.name}}</text></view>
-          <view  class="distance"><text>{{item.describe}}</text></view>
+          <view  class="distance"><text>{{item.abstract}}</text></view>
         </view>
         <!--价格-->
         <view class="right"><text class='sign'>￥</text><text class="price">{{item.price}}</text><text class='rise'>起</text></view>

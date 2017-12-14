@@ -314,8 +314,6 @@ Page({
       zIndex: "-1",
       box: ''
     });
-   console.log("二级目录");
-   console.log(that.data.categroy_two_single);
     var categroy_two_single = that.data.categroy_two_single;
     wx.request({
       header: {

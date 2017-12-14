@@ -55,7 +55,8 @@ App({
     openId: '',
     loginStatus: false,
     webSite: 'http://192.168.3.13/',
-    address:'昆明西山区美辰均美医疗美容',
-    phone:'0871-6666666'
+    address:'昆明市西山区万达广场9撞13层1311-1312号',
+    phone:'13629680069',
+    companyName:"昆明市西山区美诚均美医疗美容诊所"
   }
 })

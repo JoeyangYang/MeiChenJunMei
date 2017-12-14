@@ -35,6 +35,8 @@ Page({
         },
         url: app.globalData.webSite + 'weixin.php/wechat/pay',
         success: function (res) {
+          console.log("请求支付接口");
+          console.log(res);
           var timestamp = String(res.data.sdkData.timeStamp);
           var nonceStr = res.data.sdkData.nonceStr;
           var paySign = res.data.sdkData.paySign;
@@ -59,10 +61,12 @@ Page({
                 },
                 url: app.globalData.webSite + 'weixin.php/wechat/confirmOrder',
                 success: function () {
-                  wx.navigateBack();
                   // wx.navigateTo({
                   //   url: '/pages/order/orderList/index',
                   // })
+                  wx.switchTab({
+                    url: '/pages/me/index/index',
+                  })
                 },
               })
 

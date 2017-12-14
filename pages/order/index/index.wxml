@@ -13,14 +13,14 @@
       <!-- <navigator url="../detail/index?detail={{item}}"> -->
     <view bindtap='detail' data-detail="{{item}}">  
        <view class='box'>
-          <text class="lt">{{item.name}}</text>
+          <text class="lt">{{item.goods_name}}</text>
           <text class="arrow">></text>
           <text class="rt">{{item.status}}</text>
         </view>
       <view class="content">
         <view class="lc">
-            <text>{{item.name}}</text>
-            <text>预约时间:{{item.date}}</text>
+            <text>{{item.goods_name}}</text>
+            <text>预约时间:{{item.pretime}}</text>
             <text>{{hospitalAddress}}</text>
            
         </view>
@@ -32,8 +32,8 @@
               <view wx:if="{{item.status=='已完成'||item.status=='退款中'}}" class='again judge' bindtap='jump'> 再次预约</view>
               <view wx:if="{{item.status=='待付款'}}" bindtap='pay' class='judge' data-price="{{item.price}}" data-orderid="{{item.orderid}}" bindtap='pay' >立即付款
               </view>
-              <view wx:if="{{item.status=='已付款'}}"class='judge'data-price="{{item.price}}"data-orderid="{{item.orderid}}" bindtap='appointment' data-single="{{item}}">立即预约
-              </view>
+              <!-- <view wx:if="{{item.status=='已付款'}}"class='judge'data-price="{{item.price}}"data-orderid="{{item.orderid}}" bindtap='appointment' data-single="{{item}}">立即预约
+              </view> -->
               <view wx:if="{{item.status=='已付款'}}" bindtap='refund' class='judge' data-sum="{{item.price}}" data-orderid="{{item.orderid}}" bindtap='refund'>申请退款
               </view>    
               </view><!--btns结束-->

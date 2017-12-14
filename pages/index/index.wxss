@@ -1,7 +1,7 @@
 /* pages/index/index.wxss */
 /*整个网页*/
 .all{width: 100%; height: auto;background-color: white;}
-page { font-family: 'Microsoft YaHei'; }
+page { font-family: 'Microsoft YaHei';border-top:2px solid #000; }
 
 .relative{position: relative}
 .Center{margin: 0px auto;}

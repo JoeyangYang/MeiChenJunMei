@@ -13,7 +13,7 @@
         <view class="del_info">
             <view class="box">
                  <text class="lt">手术</text>
-                 <text class="rt">{{detail.name}}</text>
+                 <text class="rt">{{detail.goods_name}}</text>
             </view>
              <view class="box">
                  <text class="lt">地址</text>
@@ -38,7 +38,7 @@
             </view>
              <view class="box">
                  <text class="lt">姓名</text>
-                 <text class="rt">{{detail.user_name}}</text>
+                 <text class="rt">{{detail.name}}</text>
             </view>
         </view><!--del_info结束-->
     </view><!--info结束-->
@@ -60,8 +60,8 @@
       <view wx:if="{{detail.status=='已完成'||detail.status=='退款中'}}" class='again judge' bindtap='jump'> 再次预约</view>
       <view wx:if="{{detail.status=='待付款'}}" bindtap='pay' class='judge' data-price="{{detail.price}}" data-orderid="{{detail.orderid}}" bindtap='pay' >立即付款
       </view>
-      <view wx:if="{{detail.status=='已付款'}}"class='judge' bindtap='appointment' data-single="{{detail}}">立即预约
-      </view>
+      <!-- <view wx:if="{{detail.status=='已付款'}}"class='judge' bindtap='appointment' data-single="{{detail}}">立即预约
+      </view> -->
       <view wx:if="{{detail.status=='已付款'}}" bindtap='refund' class='judge' data-sum="{{detail.price}}" data-orderid="{{detail.orderid}}" bindtap='refund'>申请退款
       </view>
  </view> 
